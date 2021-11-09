@@ -1,2 +1,5 @@
 Soy María Fernanda Carantonio, siempre he tenido un gran gusto por la tecnología y AI, tengo conocimientos basicos en html y css. 
 Estoy motivada a seguir aprendiendo y afianzando los conocimientos que he ido adquiriendo en el curso.
+
+Soy Yadira Henao, bioingeniera de la universidad de Antioquia. Antes de ingresar a misión tic había desarrollado proyectos de investigación en python, matlab y c++.
+Me ha gustado mucho el tema de desarrollo web y estoy muy motivada a seguir aprendiendo todos los días. 

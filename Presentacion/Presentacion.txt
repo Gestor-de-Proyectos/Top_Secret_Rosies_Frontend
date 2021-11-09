@@ -3,3 +3,6 @@ Estoy motivada a seguir aprendiendo y afianzando los conocimientos que he ido ad
 
 Soy Yadira Henao, bioingeniera de la universidad de Antioquia. Antes de ingresar a misión tic había desarrollado proyectos de investigación en python, matlab y c++.
 Me ha gustado mucho el tema de desarrollo web y estoy muy motivada a seguir aprendiendo todos los días. 
+
+Soy Helen Vanessa Pinchao Salgar, Bióloga de la Universidad del Quindio. En relación a la programación, tengo conocimientos en R y R studio desarrollando trabajos estadísticos.
+El programa Mintic me ha motivado a seguir aprendiento programación tanto web como móvil.

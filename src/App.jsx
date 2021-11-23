@@ -3,7 +3,7 @@ import PrivateLayout from 'layouts/PrivateLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
-import { ApolloProvider, ApolloClient, HttpLink } from '@apollo/client';
+import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
 import Index from 'pages/Index';
@@ -17,7 +17,7 @@ import 'styles/globals.css';
 // import PrivateRoute from 'components/PrivateRoute';
 
 const client = new ApolloClient({
-uri: ''
+uri: 'http://localhost:4000/graphql',
 cache: new InMemoryCache(),
 })
 
@@ -25,7 +25,7 @@ function App() {
   const [userData, setUserData] = useState({});
 
   return (
-    <ApolloProvider client={}>
+    <ApolloProvider client={client}>
       <UserContext.Provider value={{ userData, setUserData }}>
         <BrowserRouter>
           <Routes>

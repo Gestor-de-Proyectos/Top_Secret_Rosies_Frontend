@@ -8,9 +8,11 @@ import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
 import Index from 'pages/Index';
 import Page2 from 'pages/Page2';
+import Inicio from './pages/Inicio';
 import IndexCategory1 from 'pages/category1/Index';
 import Category1 from 'pages/category1/CategoryPage1';
 import 'styles/globals.css';
+
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -26,10 +28,13 @@ function App() {
     >
       <UserContext.Provider value={{ userData, setUserData }}>
         <BrowserRouter>
-          <Routes>            
-          <Route path='/' element={<AuthLayout />}>
-              <Route path='' element={<Login />} /> 
-              <Route path='registro' element={<Registro />} /> 
+          <Routes>
+
+          <Route path='' element={<Inicio />} /> 
+
+          <Route path='/login' element={<AuthLayout />}>
+              <Route path='/login' element={<Login />} />
+              <Route path='/login/registro' element={<Registro />} /> 
             </Route>
 
             <Route path='/index' element={<PrivateLayout />}>

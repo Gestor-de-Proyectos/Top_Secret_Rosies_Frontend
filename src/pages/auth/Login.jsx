@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    return(
+    return( 
         <div className='max-w-md w-full space-y-8'>
             <h2 className='mt-6 text-center text-3xl font-bold text-gray-900'>
                 Inicia sesión en tu cuenta
@@ -61,15 +61,11 @@ const Login = () => {
 
                 <div className='flex items-center justify-between ml-2 block text-sm text-gray-900'>
                     <span>¿No tienes cuenta?</span>
-                    <Link to='/registro'>
+                    <Link to='/login/registro'>
                     <span className='font-medium text-green-600 hover:text-green-500'>Regístrate</span>
                     </Link>
                 </div>
-
-
-
             </form>
-
         </div>
     )
 }

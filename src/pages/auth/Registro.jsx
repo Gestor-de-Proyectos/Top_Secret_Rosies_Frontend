@@ -82,13 +82,13 @@ const Registro = () => {
             className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
           >
             
-            <Link to='/admin'>Regístrate</Link>
+            <Link to='/login/registro/confirmacion'>Regístrate</Link>
           </button>
         </div>
 
         <div className='flex items-center justify-between ml-2 block text-sm text-gray-900'>
           <span>¿Ya tienes cuenta?</span>
-          <Link to='/'>
+          <Link to='/login'>
             <span className='font-medium text-green-600 hover:text-green-500'>Inicia Sesión</span>
           </Link>
         </div>

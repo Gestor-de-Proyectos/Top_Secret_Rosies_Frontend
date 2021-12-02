@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useFormData from 'hooks/useFormData';
 
 const Registro = () => {
+  const { form, formData, updateFormData } = useFormData();
+
+  const submitForm = (e)=>{
+    e.preventDefault();
+  };
+
+
+
     return (
         <>
     <div className='max-w-md w-full space-y-8'>

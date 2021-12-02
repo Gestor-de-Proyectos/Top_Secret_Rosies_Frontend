@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Input from 'components/input';
+
 import useFormData from 'hooks/useFormData';
 
 function Registro() {
@@ -10,7 +10,7 @@ function Registro() {
   const submitForm = (e)=>{
     e.preventDefault();
   };
-  
+
   return (
     <>
       <div className='max-w-md w-full space-y-8'>

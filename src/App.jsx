@@ -8,6 +8,7 @@ import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
 import Index from 'pages/Index';
 import IndexUsuarios from 'pages/usuarios';
+import EditarUsuario from 'pages/usuarios/editar';
 import Inicio from './pages/Inicio';
 import Category1 from 'pages/category1/CategoryPage1';
 import 'styles/globals.css';
@@ -41,9 +42,10 @@ function App() {
               <Route path='/login/registro' element={<Registro />} /> 
             </Route>
 
-            <Route path='/index' element={<PrivateLayout />}>
+            <Route path='/' element={<PrivateLayout />}>
               <Route path='/index' element={<Index />} /> 
-              <Route path='/index/usuarios' element={<IndexUsuarios />} />
+              <Route path='/usuarios' element={<IndexUsuarios />} />
+              <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
               <Route path='/index/category1/' element={<Category1 />} />               
             </Route>
             

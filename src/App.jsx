@@ -4,11 +4,13 @@ import AuthLayout from 'layouts/AuthLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import Login from 'pages/auth/Login';
-import Registro from 'pages/auth/Registro';
+import Login from 'pages/auth/login';
+import Register from 'pages/auth/Register';
 import Index from 'pages/Index';
 import IndexUsuarios from 'pages/usuarios';
 import EditarUsuario from 'pages/usuarios/editar';
+import IndexProyectos from 'pages/proyectos/index';
+import NuevoProyecto from 'pages/proyectos/nuevoProyecto';
 import Inicio from './pages/Inicio';
 import Category1 from 'pages/category1/CategoryPage1';
 import 'styles/globals.css';
@@ -39,14 +41,16 @@ function App() {
 
           <Route path='/login' element={<AuthLayout />}>
               <Route path='/login' element={<Login />} />
-              <Route path='/login/registro' element={<Registro />} /> 
+              <Route path='/login/registro' element={<Register />} /> 
             </Route>
 
             <Route path='/' element={<PrivateLayout />}>
               <Route path='/index' element={<Index />} /> 
               <Route path='/usuarios' element={<IndexUsuarios />} />
               <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
-              <Route path='/index/category1/' element={<Category1 />} />               
+              <Route path='/index/category1/' element={<Category1 />} />  
+              <Route path='/proyectos' element={<IndexProyectos />} />
+              <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />               
             </Route>
             
           </Routes>

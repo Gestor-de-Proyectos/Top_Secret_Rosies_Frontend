@@ -3,7 +3,8 @@ import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from 'graphql/usuarios/queries';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enum';
+import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
+import PrivateRoute from 'components/PrivateRoute';
 
 const IndexUsuarios = () => {
 
@@ -23,6 +24,7 @@ const IndexUsuarios = () => {
 
 
   return (  
+    <PrivateRoute roleList={['ADMINISTRADOR']}>
   <div>
     Datos Usuarios:
       <table className='tabla'>
@@ -60,8 +62,8 @@ const IndexUsuarios = () => {
       </table>
 
   </div>
-
-    ) 
+  </PrivateRoute>
+     ) 
 };
 
 export default IndexUsuarios;

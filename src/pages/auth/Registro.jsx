@@ -13,9 +13,10 @@ import { useAuth } from 'context/authContext';
 
 
 const Registro = () => {
+  const { form, formData, updateFormData } = useFormData(null);
   const { setToken } = useAuth();
-  const navigate = useNavigate();
-  const { form, formData, updateFormData } = useFormData();
+  let navigate = useNavigate();
+  
 
   const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
     useMutation(REGISTRO);

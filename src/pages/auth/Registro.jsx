@@ -1,16 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import React, { useEffect } from 'react';
+import Input from 'components/Input';
+import { Enum_Rol } from 'utils/enum';
+import DropDown from 'components/Dropdown';
+import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
+import { Link } from 'react-router-dom';
+import { REGISTRO } from 'graphql/auth/mutations';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router';
+import { useAuth } from 'context/authContext';
+
 
 const Registro = () => {
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
   const { form, formData, updateFormData } = useFormData();
 
-  const submitForm = (e)=>{
+  const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
+    useMutation(REGISTRO);
+
+  const submitForm = (e) => {
     e.preventDefault();
+    registro({ variables: formData });
   };
 
-
-
+  useEffect(() => {
+    if (dataMutation) {
+      if (dataMutation.registro.token) {
+        setToken(dataMutation.registro.token);
+        navigate('/');
+      }
+    }
+  }, [dataMutation, setToken, navigate]);
     return (
         <>
     <div className='max-w-md w-full space-y-8'>
@@ -101,6 +123,12 @@ const Registro = () => {
             <span className='font-medium text-green-600 hover:text-green-500'>Inicia Sesión</span>
           </Link>
         </div>
+
+        <ButtonLoading
+          disabled={Object.keys(formData).length === 0}
+          loading={false}
+          text='Registrarme'
+        />
       </form>
       </div>
     </>       

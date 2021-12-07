@@ -4,7 +4,7 @@ import AuthLayout from 'layouts/AuthLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import Login from 'pages/auth/login';
+import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import Index from 'pages/Index';
 import IndexUsuarios from 'pages/usuarios';

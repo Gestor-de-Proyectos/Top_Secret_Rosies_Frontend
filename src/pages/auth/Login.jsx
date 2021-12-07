@@ -9,9 +9,9 @@ import { useAuth } from 'context/authContext';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const navigate = useNavigate();
   const { setToken } = useAuth();
-  const { form, formData, updateFormData } = useFormData();
+  const { form, formData, updateFormData } = useFormData(null);
+  let navigate = useNavigate();
 
   const [login, { data: dataMutation, loading: mutationLoading, error: mutationError }] =
     useMutation(LOGIN);

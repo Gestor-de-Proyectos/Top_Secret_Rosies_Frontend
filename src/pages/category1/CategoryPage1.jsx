@@ -67,7 +67,7 @@ const Category1 = () => {
             className='group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
           >
             
-            <Link to='/login'>Agregar nuevo proyecto</Link>
+            <Link to=''>Agregar nuevo proyecto</Link>
           </button>
 
   </div>

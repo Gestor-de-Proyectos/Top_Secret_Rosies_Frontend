@@ -13,27 +13,12 @@ import { useAuth } from 'context/authContext';
 
 
 const Registro = () => {
-  const { form, formData, updateFormData } = useFormData(null);
-  const { setToken } = useAuth();
-  let navigate = useNavigate();
-  
+  const { form, formData, updateFormData } = useFormData();
 
-  const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
-    useMutation(REGISTRO);
-
-  const submitForm = (e) => {
+  const submitForm = (e)=>{
     e.preventDefault();
-    registro({ variables: formData });
   };
 
-  useEffect(() => {
-    if (dataMutation) {
-      if (dataMutation.registro.token) {
-        setToken(dataMutation.registro.token);
-        navigate('/');
-      }
-    }
-  }, [dataMutation, setToken, navigate]);
     return (
         <>
     <div className='max-w-md w-full space-y-8'>

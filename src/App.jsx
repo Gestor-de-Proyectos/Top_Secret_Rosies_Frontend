@@ -3,7 +3,7 @@ import PrivateLayout from 'layouts/PrivateLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
-import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
 import Index from 'pages/Index';
@@ -12,9 +12,14 @@ import IndexProyectos from 'pages/Proyectos/IndexProyectos';
 import NuevoProyecto from 'pages/Proyectos/NuevoProvecto';
 import IndexUsuarios from 'pages/Usuarios/IndexUsuarios';
 import 'styles/globals.css';
+import 'styles/tabla.css';
 
 
 // import PrivateRoute from 'components/PrivateRoute';
+
+// const httpLink = createHttpLink ({
+//   uri: "https://quiet-cliffs-27491.herokuapp.com/graphql"
+// })
 
 const client = new ApolloClient({
 uri: 'http://localhost:4000/graphql',
@@ -37,12 +42,11 @@ function App() {
               <Route path='/login/registro' element={<Registro />} /> 
             </Route>
 
-            <Route path='/index' element={<PrivateLayout />}>
+            <Route path='/' element={<PrivateLayout />}>
               <Route path='/index' element={<Index />} /> 
               <Route path='/index/usuarios' element={<IndexUsuarios />} />
               <Route path='/index/proyectos/' element={<IndexProyectos/>} />               
             </Route>
-            
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

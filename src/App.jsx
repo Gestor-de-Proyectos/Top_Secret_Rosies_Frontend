@@ -48,7 +48,6 @@ function App() {
               <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
               <Route path='/index/category1/' element={<Category1 />} />               
             </Route>
-            
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

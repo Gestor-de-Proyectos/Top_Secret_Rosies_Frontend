@@ -7,7 +7,7 @@ const ButtonLoading = ({ disabled, loading, text }) => {
     <button
       disabled={disabled}
       type='submit'
-      className='bg-indigo-700 text-white font-bold text-lg py-3 px-6  rounded-xl hover:bg-indigo-500 shadow-md my-2 disabled:opacity-50 disabled:bg-gray-700'
+      className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
     >
       {loading ? <ReactLoading type='spin' height={30} width={30} /> : text}
     </button>

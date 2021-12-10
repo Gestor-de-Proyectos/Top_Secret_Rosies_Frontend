@@ -45,7 +45,8 @@ function App() {
             <Route path='/' element={<PrivateLayout />}>
               <Route path='/index' element={<Index />} /> 
               <Route path='/index/usuarios' element={<IndexUsuarios />} />
-              <Route path='/index/proyectos/' element={<IndexProyectos/>} />               
+              <Route path='/index/proyectos/' element={<IndexProyectos/>} />  
+              <Route path='/index/nuevoproyecto/' element={<NuevoProyecto/>} />              
             </Route>
           </Routes>
         </BrowserRouter>

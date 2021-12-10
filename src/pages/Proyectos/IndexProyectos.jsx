@@ -39,7 +39,7 @@ const IndexProyectos = () => {
         <h1 className='text-gray-900 text-xl font-bold uppercase'>Proyectos</h1>
         <div className='self-end my-5'>
           <button className='bg-green-700 p-2 rounded-lg shadow-sm text-white hover:bg-green-500'>
-            <Link to='/proyectos/nuevo'>Crear nuevo proyecto</Link>
+            <Link to='index/proyectos/nuevoproyecto'>Crear nuevo proyecto</Link>
           </button>
         </div>
         {queryData.Proyectos.map((proyecto) => {

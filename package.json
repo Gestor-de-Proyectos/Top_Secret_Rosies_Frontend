@@ -4,13 +4,9 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.5",
-<<<<<<< HEAD
     "@craco/craco": "^6.4.0",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
-=======
-    "@craco/craco": "^6.4.2",
->>>>>>> 1f2762455a2663ae9ba42d6dd03f8d6713442d50
     "@material-ui/core": "^4.12.3",
     "@mui/material": "^5.2.3",
     "@testing-library/jest-dom": "^5.11.4",

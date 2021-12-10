@@ -7,10 +7,10 @@ import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache } from '@apollo/c
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
 import Index from 'pages/Index';
-import Page2 from 'pages/Page2';
 import Inicio from './pages/Inicio';
-import IndexCategory1 from 'pages/category1/Index';
-import Category1 from 'pages/category1/CategoryPage1';
+import IndexProyectos from 'pages/Proyectos/IndexProyectos';
+import NuevoProyecto from 'pages/Proyectos/NuevoProvecto';
+import IndexUsuarios from 'pages/Usuarios/IndexUsuarios';
 import 'styles/globals.css';
 
 
@@ -39,8 +39,8 @@ function App() {
 
             <Route path='/index' element={<PrivateLayout />}>
               <Route path='/index' element={<Index />} /> 
-              <Route path='/index/usuarios' element={<Page2 />} />
-              <Route path='/index/category1/' element={<Category1 />} />               
+              <Route path='/index/usuarios' element={<IndexUsuarios />} />
+              <Route path='/index/proyectos/' element={<IndexProyectos/>} />               
             </Route>
             
           </Routes>

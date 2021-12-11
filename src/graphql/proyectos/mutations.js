@@ -10,13 +10,12 @@ const EDITAR_PROYECTO = gql`
 `;
 
 const CREAR_PROYECTO = gql`
-  mutation CrearProyecto(
+  mutation Mutation(
     $nombre: String!
     $presupuesto: Float!
     $fechaInicio: Date!
     $fechaFin: Date!
     $lider: String!
-    $objetivos: [crearObjetivo]
   ) {
     crearProyecto(
       nombre: $nombre
@@ -24,7 +23,6 @@ const CREAR_PROYECTO = gql`
       fechaInicio: $fechaInicio
       fechaFin: $fechaFin
       lider: $lider
-      objetivos: $objetivos
     ) {
       _id
     }

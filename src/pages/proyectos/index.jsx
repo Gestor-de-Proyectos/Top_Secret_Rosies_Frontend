@@ -35,19 +35,19 @@ const IndexProyectos = () => {
 
   if (queryData.Proyectos) {
     return (
-      <div className='p-10 flex flex-col'>
-        <div className='flex w-full items-center justify-center'>
-          <h1 className='text-2xl font-bold text-gray-900'>Lista de Proyectos</h1>
+      <div className='p-10 flex flex-col items-center'>
+        <h1 className='text-gray-900 text-xl font-bold uppercase'>Proyectos</h1>
+        <div className='self-end my-5'>
+          <button className='bg-indigo-500 p-2 rounded-lg shadow-sm text-white hover:bg-indigo-400'>
+            <Link to='/proyectos/nuevo'>Crear nuevo proyecto</Link>
+          </button>
         </div>
-        <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-          <div className='my-2 self-end'>
-            <button className='bg-indigo-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-indigo-400'>
-              <Link to='/proyectos/nuevo'>Crear nuevo proyecto</Link>
-            </button>
-          </div>
-        </PrivateComponent>
         {queryData.Proyectos.map((proyecto) => {
-          return <AccordionProyecto proyecto={proyecto} />;
+          return (
+            <div className='w-full'>
+              <AccordionProyecto proyecto={proyecto} />
+            </div>
+          );
         })}
       </div>
     );

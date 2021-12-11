@@ -13,7 +13,7 @@ const Inicio = () => {
                     type='submit'
                     className='group relative w-30 my-10 mx-10 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
                     >                   
-                    <Link to='/login'>Ingresar</Link>    
+                    <Link to='/auth/login'>Ingresar</Link>    
                     
            </button>
            </body>

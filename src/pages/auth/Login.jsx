@@ -42,7 +42,7 @@ const Login = () => {
                 <input type='hidden' name='remember' defaultValue='true' />
                 <div className='rounded-md shadow-sm -space-y-px'>
                     <div>
-                        <input
+                        <Input
                             name= 'email'
                             type='email'
                             autoComplete='email'
@@ -52,7 +52,7 @@ const Login = () => {
                         />
                     </div>
                     <div>
-                        <input
+                        <Input
                             id='password'
                             name='password'
                             type='password'

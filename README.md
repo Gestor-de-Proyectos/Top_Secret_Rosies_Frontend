@@ -13,3 +13,6 @@ Paso 2: navegar hacia la carpeta e instalar dependencias
 Paso 3: ejecutar el proyecto
 
 `yarn start`
+
+cambios de prueba para corregir error
+

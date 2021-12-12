@@ -15,10 +15,10 @@ import PrivateComponent from 'components/PrivateComponent';
 import { Link } from 'react-router-dom';
 
 const AccordionStyled = styled((props) => <Accordion {...props} />)(({ theme }) => ({
-  backgroundColor: '#919191',
+  backgroundColor: '#02AC66',
 }));
 const AccordionSummaryStyled = styled((props) => <AccordionSummary {...props} />)(({ theme }) => ({
-  backgroundColor: '#919191',
+  backgroundColor: '#006a4e',
 }));
 const AccordionDetailsStyled = styled((props) => <AccordionDetails {...props} />)(({ theme }) => ({
   backgroundColor: '#ccc',
@@ -38,7 +38,7 @@ const IndexProyectos = () => {
       <div className='p-10 flex flex-col items-center'>
         <h1 className='text-gray-900 text-xl font-bold uppercase'>Proyectos</h1>
         <div className='self-end my-5'>
-          <button className='bg-indigo-500 p-2 rounded-lg shadow-sm text-white hover:bg-indigo-400'>
+          <button className='bg-green-700 p-2 rounded-lg shadow-sm text-white hover:bg-green-400'>
             <Link to='/proyectos/nuevo'>Crear nuevo proyecto</Link>
           </button>
         </div>

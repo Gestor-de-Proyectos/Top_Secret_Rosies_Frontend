@@ -13,6 +13,7 @@ import IndexUsuarios from 'pages/usuarios/index';
 import EditarUsuario from 'pages/usuarios/editar';
 import IndexProyectos from 'pages/proyectos/index';
 import NuevoProyecto from 'pages/proyectos/nuevoProyecto';
+import IndexInscripciones from 'pages/inscripciones';
 import Inicio from './pages/Inicio';
 import Category1 from 'pages/category1/CategoryPage1';
 import jwt_decode from 'jwt-decode';
@@ -88,7 +89,8 @@ function App() {
                 <Route path='/usuarios' element={<IndexUsuarios />} />
                 <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
                 <Route path='/proyectos' element={<IndexProyectos />} />
-                <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />   
+                <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />  
+                <Route path='/inscripciones' element={<IndexInscripciones />} /> 
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>

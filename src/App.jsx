@@ -84,7 +84,7 @@ function App() {
             <Route path='/' element={<Inicio />}>
             </Route>
               <Route path='/' element={<PrivateLayout />}>
-                <Route path='' element={<Index />} />
+                <Route path='home' element={<Index />} />
                 <Route path='/usuarios' element={<IndexUsuarios />} />
                 <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
                 <Route path='/proyectos' element={<IndexProyectos />} />
@@ -95,6 +95,7 @@ function App() {
                 <Route path='register' element={<Register />} />
                 <Route path='login' element={<Login />} />
               </Route>
+              
             </Routes>
           </BrowserRouter>
         </UserContext.Provider>

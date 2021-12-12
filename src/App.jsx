@@ -27,15 +27,13 @@ import 'styles/tabla.css';
 // })
 
 const httpLink = createHttpLink({
-uri: 'http://localhost:4000/graphql',
-//cache: new InMemoryCache(),
-})
+  uri: 'http://localhost:4000/graphql',
+});
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = JSON.parse(localStorage.getItem('token'));
   // return the headers to the context so httpLink can read them
-
   return {
     headers: {
       ...headers,
@@ -52,41 +50,51 @@ const client = new ApolloClient({
 function App() {
   const [userData, setUserData] = useState({});
   const [authToken, setAuthToken] = useState('');
-  const [loadingAuth, setLoadingAuth] = useState(true);
 
-  const setToken = (data) => {
-    setAuthToken(data);
-    console.log('dt token', data);
-    if (data) {
-      localStorage.setItem('token', JSON.stringify(data));
+  const setToken = (token) => {
+    console.log('set token', token);
+    setAuthToken(token);
+    if (token) {
+      localStorage.setItem('token', JSON.stringify(token));
     } else {
       localStorage.removeItem('token');
     }
-    setLoadingAuth(false);
   };
+
+  useEffect(() => {
+    if (authToken) {
+      const decoded = jwt_decode(authToken);
+      setUserData({
+        _id: decoded._id,
+        nombre: decoded.nombre,
+        apellido: decoded.apellido,
+        identificacion: decoded.identificacion,
+        correo: decoded.correo,
+        rol: decoded.rol,
+      });
+    }
+  }, [authToken]);
 
   return (
     <ApolloProvider client={client}>
-      <AuthContext.Provider value={{ authToken, setToken, loadingAuth }}>   
+      <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <BrowserRouter>
             <Routes>
-              <Route path='' element={<Inicio />} />                          
-
-              <Route path='auth' element={<AuthLayout />}>              
-                <Route path='login' element={<Login />} />              
-                <Route path='register' element={<Register />} /> 
-              </Route>
-
-            <Route path='/' element={<PrivateLayout />}>
-              <Route path='' element={<Index />} /> 
-              <Route path='usuarios' element={<IndexUsuarios />} />
-              <Route path='usuarios/editar/:_id' element={<EditarUsuario />} />
-              <Route path='index/category1/' element={<Category1 />} />  
-              <Route path='proyectos' element={<IndexProyectos />} />
-              <Route path='proyectos/nuevo' element={<NuevoProyecto />} />               
+            <Route path='/' element={<Inicio />}>
             </Route>
-            
+              <Route path='/' element={<PrivateLayout />}>
+                <Route path='' element={<Index />} />
+                <Route path='/usuarios' element={<IndexUsuarios />} />
+                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                <Route path='/proyectos' element={<IndexProyectos />} />
+                <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />   
+                <Route path='category1/page1' element={<Category1 />} />
+              </Route>
+              <Route path='/auth' element={<AuthLayout />}>
+                <Route path='register' element={<Register />} />
+                <Route path='login' element={<Login />} />
+              </Route>
             </Routes>
           </BrowserRouter>
         </UserContext.Provider>

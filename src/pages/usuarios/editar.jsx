@@ -22,6 +22,7 @@ const EditarUsuario = () => {
     variables: { _id },
   });
 
+
   const [editarUsuario, { data: mutationData, loading: mutationLoading, error: mutationError }] =
     useMutation(EDITAR_USUARIO);
 

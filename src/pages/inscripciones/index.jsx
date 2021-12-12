@@ -5,11 +5,7 @@ import { GET_INSCRIPCIONES } from 'graphql/inscripciones/queries';
 import { APROBAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import ButtonLoading from 'components/ButtonLoading';
 import { toast } from 'react-toastify';
-import {
-  AccordionStyled,
-  AccordionSummaryStyled,
-  AccordionDetailsStyled,
-} from 'components/Accordion';
+import {  AccordionStyled,  AccordionSummaryStyled,  AccordionDetailsStyled,} from 'components/Accordion';
 
 const IndexInscripciones = () => {
   const { data, loading, error, refetch } = useQuery(GET_INSCRIPCIONES);

@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 import {  AccordionStyled,  AccordionSummaryStyled,  AccordionDetailsStyled,} from 'components/Accordion';
 
 const IndexProyectos = () => {
-  const { data: queryData, loading, error } = useQuery(PROYECTOS);
+  const { queryData, loading, error } = useQuery(PROYECTOS);
 
   useEffect(() => {
     console.log('datos proyecto', queryData);
@@ -24,7 +24,7 @@ const IndexProyectos = () => {
   if (loading) return <div>Cargando...</div>;
 
   if (queryData.Proyectos) {
-    return (
+      return (
       <div className='p-10 flex flex-col items-center'>
         <h1 className='text-gray-900 text-xl font-bold uppercase'>Proyectos</h1>
         <div className='self-end my-5'>

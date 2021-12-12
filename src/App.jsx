@@ -10,7 +10,7 @@ import Index from 'pages/Index';
 import Inicio from './pages/Inicio';
 import IndexProyectos from 'pages/Proyectos/IndexProyectos';
 import NuevoProyecto from 'pages/Proyectos/NuevoProvecto';
-import IndexUsuarios from 'pages/Usuarios/IndexUsuarios';
+import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import 'styles/globals.css';
 import 'styles/tabla.css';
 

@@ -1,17 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Input from 'components/Input';
+import ButtonLoading from 'components/ButtonLoading';
 import { Link } from 'react-router-dom';
+import useFormData from 'hooks/useFormData';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from 'graphql/auth/mutations';
+import { useAuth } from 'context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    return(
+  const { setToken } = useAuth();
+  const { form, formData, updateFormData } = useFormData(null);
+  let navigate = useNavigate();
+
+  const [login, { data: dataMutation, loading: mutationLoading, error: mutationError }] =
+    useMutation(LOGIN);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    login({
+      variables: formData,
+    });
+  };
+
+  useEffect(() => {
+    if (dataMutation) {
+      if (dataMutation.login.token) {
+        setToken(dataMutation.login.token);
+        navigate('/');
+      }
+    }
+  }, [dataMutation, setToken, navigate]);
+
+    return( 
         <div className='max-w-md w-full space-y-8'>
             <h2 className='mt-6 text-center text-3xl font-bold text-gray-900'>
                 Inicia sesión en tu cuenta
             </h2>
-            <form className='mt-8 space-y-6'>
+            <form className='mt-8 space-y-6'onSubmit={submitForm} onChange={updateFormData} ref={form}>
                 <input type='hidden' name='remember' defaultValue='true' />
                 <div className='rounded-md shadow-sm -space-y-px'>
                     <div>
-                        <input
+                        <Input
                             name= 'email'
                             type='email'
                             autoComplete='email'
@@ -21,7 +52,7 @@ const Login = () => {
                         />
                     </div>
                     <div>
-                        <input
+                        <Input
                             id='password'
                             name='password'
                             type='password'
@@ -52,24 +83,20 @@ const Login = () => {
                     </a>
                     </div>
                 </div>
-                <button
-                    type='submit'
-                    className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
-                    >                    
-                    <Link to='/index'>Iniciar sesión</Link>
-                </button>
-
-                <div className='flex items-center justify-between ml-2 block text-sm text-gray-900'>
+                <ButtonLoading
+          disabled={Object.keys(formData).length === 0}
+          loading={mutationLoading}
+          text='Iniciar Sesión'
+        />
+                </form>
+                <div className='items-center justify-between ml-2 block text-sm text-gray-900'>
+                    
                     <span>¿No tienes cuenta?</span>
-                    <Link to='/registro'>
+                    <Link to='/auth/register'>
                     <span className='font-medium text-green-600 hover:text-green-500'>Regístrate</span>
                     </Link>
                 </div>
-
-
-
-            </form>
-
+            
         </div>
     )
 }

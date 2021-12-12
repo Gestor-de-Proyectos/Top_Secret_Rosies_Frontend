@@ -1,27 +1,41 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ImagenLogo from './ImagenLogo';
+import { useAuth } from 'context/authContext';
+import PrivateComponent from './PrivateComponent';
 
 const SidebarLinks = () => {
   return (
     <ul className='mt-12'>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
-      <SidebarRoute to='/index/usuarios' title='Usuarios' icon='fas fa-users' />
-      <SidebarRoute to='/index/category1' title='Proyectos' icon='fas fa-tasks' />
-      <SidebarRoute to='' title='Configuración' icon='fas fa-user-cog' />
-      <SidebarRoute to='' title='Cerrar Sesión' icon='fas fa-sign-out-alt' />
+      <PrivateComponent roleList={['ADMINISTRADOR']}>
+        <SidebarRoute to='/index/usuarios' title='Usuarios' icon='fas fa-users' />
+      </PrivateComponent>
+      <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-tasks' />
+      <SidebarRoute to='/' title='Configuración' icon='fas fa-user-cog' />
+      <Logout />
     </ul>
   );
 };
 
-/*const Logo = () => {
+const Logout = () => {
+  const { setToken } = useAuth();
+  const deleteToken = () => {
+    console.log('eliminar token');
+    setToken(null);
+  };
   return (
-    <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo-udea.png' alt='Logo' className='h-16' />
-      <span className='my-2 text-xl font-bold text-center'>Título de Mi Aplicación</span>
-    </div>
+    <li onClick={() => deleteToken()}>
+      <NavLink to='/auth/login' className='sidebar-route text-red-700'>
+        <div className='flex items-center'>
+          <i className='fas fa-sign-out-alt' />
+          <span className='text-sm  ml-2'>Cerrar Sesión</span>
+        </div>
+      </NavLink>
+    </li>
   );
-};*/
+};
+
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);

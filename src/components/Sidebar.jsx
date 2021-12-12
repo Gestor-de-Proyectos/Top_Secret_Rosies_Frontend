@@ -9,12 +9,10 @@ const SidebarLinks = () => {
     <ul className='mt-12'>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
-        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />
+        <SidebarRoute to='/index/usuarios' title='Usuarios' icon='fas fa-users' />
       </PrivateComponent>
-      <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-smile-wink' />
-      <SidebarRoute to='/category1' title='catego 1' icon='fas fa-tasks' />
+      <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-tasks' />
       <SidebarRoute to='/' title='Configuración' icon='fas fa-user-cog' />
-      <SidebarRoute to='/' title='Cerrar Sesión' icon='fas fa-sign-out-alt' />
       <Logout />
     </ul>
   );
@@ -38,14 +36,6 @@ const Logout = () => {
   );
 };
 
-const Logo = () => {
-  return (
-    <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo-udea.png' alt='Logo' className='h-16' />
-      <span className='my-2 text-xl font-bold text-center'>Título de Mi Aplicación</span>
-    </div>
-  );
-};
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);

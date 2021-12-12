@@ -9,7 +9,7 @@ const SidebarLinks = () => {
     <ul className='mt-12'>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
-        <SidebarRoute to='/index/usuarios' title='Usuarios' icon='fas fa-users' />
+        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />
       </PrivateComponent>
       <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-tasks' />
       <SidebarRoute to='/' title='Configuración' icon='fas fa-user-cog' />

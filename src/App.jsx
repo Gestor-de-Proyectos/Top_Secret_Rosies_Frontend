@@ -6,12 +6,12 @@ import { setContext } from '@apollo/client/link/context';
 import { UserContext } from 'context/userContext';
 import { AuthContext } from 'context/authContext';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import Login from 'pages/auth/login';
+//import Login from 'pages/auth/login';
 import Register from 'pages/auth/Register';
 import Index from 'pages/Index';
-import Index from 'pages/usuarios/index';
+import IndexUsuarios from 'pages/usuarios/index';
 import Editar from 'pages/usuarios/editar';
-import Index from 'pages/proyectos/index';
+import IndexProyectos from 'pages/proyectos/index';
 import nuevoProyecto from 'pages/proyectos/nuevoProyecto';
 import Inicio from './pages/Inicio';
 import jwt_decode from 'jwt-decode';
@@ -85,13 +85,13 @@ function App() {
               <Route path='/' element={<PrivateLayout />}>
                 <Route path='' element={<Index />} />
                 <Route path='/usuarios' element={<IndexUsuarios />} />
-                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                {/* <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} /> */}
                 <Route path='/proyectos' element={<IndexProyectos />} />
-                <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />   
+                {/* <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />    */}
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
-                <Route path='login' element={<Login />} />
+                {/* <Route path='login' element={<Login />} /> */}
               </Route>
             </Routes>
           </BrowserRouter>

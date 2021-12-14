@@ -9,10 +9,10 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@ap
 import Login from 'pages/auth/login';
 import Register from 'pages/auth/Register';
 import Index from 'pages/Index';
-import IndexUsuarios from 'pages/usuarios/index';
-import EditarUsuario from 'pages/usuarios/editar';
-import IndexProyectos from 'pages/proyectos/index';
-import NuevoProyecto from 'pages/proyectos/nuevoProyecto';
+import Index from 'pages/usuarios/index';
+import Editar from 'pages/usuarios/editar';
+import Index from 'pages/proyectos/index';
+import nuevoProyecto from 'pages/proyectos/nuevoProyecto';
 import Inicio from './pages/Inicio';
 import jwt_decode from 'jwt-decode';
 import 'styles/globals.css';

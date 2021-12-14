@@ -14,5 +14,3 @@ Paso 3: ejecutar el proyecto
 
 `yarn start`
 
-cambios de prueba para corregir error
-

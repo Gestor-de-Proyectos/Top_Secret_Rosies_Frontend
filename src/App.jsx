@@ -6,7 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 import { UserContext } from 'context/userContext';
 import { AuthContext } from 'context/authContext';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import Login from 'pages/auth/login';
+import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import Index from 'pages/Index';
 import IndexUsuarios from 'pages/usuarios/index';

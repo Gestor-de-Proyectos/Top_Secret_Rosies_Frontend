@@ -82,8 +82,8 @@ const Inscripcion = ({ inscripcion, refetch }) => {
 
   return (
     <div className='bg-gray-50 flex flex-col p-6 m-2 rounded-lg items-center justify-center shadow-xl'>
-      <span>{inscripcion.proyecto.nombre}</span>
-      <span>{inscripcion.estudiante.nombre}</span>
+      <span className='text-lg font-bold '>{inscripcion.proyecto.nombre}</span>
+      <span className='text-green-700'>{inscripcion.estudiante.nombre}</span>
       <span>{inscripcion.estado}</span>
       {inscripcion.estado === 'PENDIENTE' && (
         <div><ButtonLoading

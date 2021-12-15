@@ -4,10 +4,9 @@ import { Enum_Rol } from 'utils/enums';
 import DropDown from 'components/Dropdown';
 import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { REGISTRO } from 'graphql/auth/mutations';
 import { useMutation } from '@apollo/client';
-import { useNavigate } from 'react-router';
 import { useAuth } from 'context/authContext';
 import { toast } from 'react-toastify';
 
@@ -42,7 +41,7 @@ const Register = () => {
           <Input label='Nombre:' name='nombre' type='text' required />
           <Input label='Apellido:' name='apellido' type='text' required />
           <Input label='Documento:' name='identificacion' type='text' required />
-          <DropDown label='Rol deseado:' name='rol' required={true} options={Enum_Rol} />
+          <DropDown label='Rol deseado:' name='rol' required options={Enum_Rol} />
           <Input label='Correo:' name='correo' type='email' required />
           <Input label='Contraseña:' name='password' type='password' required />
         </div>

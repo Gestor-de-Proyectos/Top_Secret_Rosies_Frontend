@@ -17,9 +17,9 @@ const IndexInscripciones = () => {
   return (
     <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div className='p-10'>
-        <div>Pagina de inscripciones</div>
-        <div className='my-4'>
-          <AccordionInscripcion
+      <h1 className='text-green-900 text-xl font-bold uppercase'>Inscripciones</h1>
+        <div className='uppercase font-bold text-gray-100'>
+          <AccordionInscripcion 
             titulo='Inscripciones aprobadas'
             data={data.Inscripciones.filter((el) => el.estado === 'ACEPTADO')}
           />
@@ -81,19 +81,28 @@ const Inscripcion = ({ inscripcion, refetch }) => {
   };
 
   return (
-    <div className='bg-gray-900 text-gray-50 flex flex-col p-6 m-2 rounded-lg shadow-xl'>
+    <div className='bg-gray-50 flex flex-col p-6 m-2 rounded-lg items-center justify-center shadow-xl'>
       <span>{inscripcion.proyecto.nombre}</span>
       <span>{inscripcion.estudiante.nombre}</span>
       <span>{inscripcion.estado}</span>
       {inscripcion.estado === 'PENDIENTE' && (
-        <ButtonLoading
+        <div><ButtonLoading
           onClick={() => {
             cambiarEstadoInscripcion();
           }}
-          text='Aprobar Inscripcion'
+          text='Aprobar'
           loading={loading}
           disabled={false}
         />
+        <ButtonLoading
+        onClick={() => {
+          cambiarEstadoInscripcion();
+        }}
+        text='Rechazar'
+        loading={loading}
+        disabled={false}
+      />
+      </div>
       )}
     </div>
   );

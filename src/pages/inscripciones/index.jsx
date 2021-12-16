@@ -59,7 +59,7 @@ const AccordionInscripcion = ({ data, titulo, refetch = () => {} }) => {
 };
 
 const Inscripcion = ({ inscripcion, refetch }) => {
-  const [aprobarInscripcion, { data, loading, error }] =
+  const [aprobarInscripcion, { data: data, loading: loading, error }] =
     useMutation(APROBAR_INSCRIPCION);
   
     useEffect(() => {
@@ -79,11 +79,11 @@ const Inscripcion = ({ inscripcion, refetch }) => {
     useMutation(RECHAZAR_INSCRIPCION);
   
   useEffect(() => {
-    if (mutationData.RECHAZAR_INSCRIPCION) {
+    if (mutationData) {
       toast.success('Inscripcion rechazada con exito');
       refetch();
     }
-  }, [mutationData.RECHAZAR_INSCRIPCION]);
+  }, [mutationData]);
  
   
 

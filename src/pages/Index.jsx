@@ -1,8 +1,7 @@
 import React from 'react';
 import Logo from 'media/logo-udea-white.png'
 
-const Index = () => {
-  return (
+const Index = () => (
     <div>
       <div className='bg-white h-screen'>
         <header className='bg-green-700 h-40'>
@@ -11,6 +10,5 @@ const Index = () => {
       </div>
     </div>
   );
-};
 
 export default Index;

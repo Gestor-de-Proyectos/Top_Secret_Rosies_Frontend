@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import Input from 'components/Input';
 import ButtonLoading from 'components/ButtonLoading';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useFormData from 'hooks/useFormData';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from 'graphql/auth/mutations';
 import { useAuth } from 'context/authContext';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,8 +37,8 @@ const Login = () => {
                 Inicia sesión en tu cuenta
             </h2>
             <form className='mt-8 space-y-6'onSubmit={submitForm} onChange={updateFormData} ref={form}>
-            <Input name='correo' type='email' label='Correo' required={true} />
-            <Input name='password' type='password' label='Contraseña' required={true} />
+            <Input name='correo' type='email' label='Correo' required />
+            <Input name='password' type='password' label='Contraseña' required />
                 <ButtonLoading
                   disabled={Object.keys(formData).length === 0}
                   loading={mutationLoading}

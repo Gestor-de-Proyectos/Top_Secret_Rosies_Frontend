@@ -18,7 +18,7 @@ const NuevoProyecto = () => {
   const [mapUsuarios, setMapUsuarios] = useState([]);
   const { data, loading, error } = useQuery(GET_USUARIOS, {
     variables: {
-      filtro: { rol: 'ADMINISTRADOR' },
+      filtro: { rol: 'LIDER' },
     },
   });
 

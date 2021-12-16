@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ImagenLogo from './ImagenLogo';
 import { useAuth } from 'context/authContext';
-import PrivateComponent from './PrivateComponent';
+import PrivateComponent from 'components/PrivateComponent';
 
 const SidebarLinks = () => {
   return (
@@ -15,7 +15,7 @@ const SidebarLinks = () => {
       <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
         <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-user' />
       </PrivateComponent>
-      <SidebarRoute to='/' title='Configuración' icon='fas fa-user-cog' />
+      <SidebarRoute to='/' title='Perfil' icon='fas fa-user-cog' />
       <Logout />
     </ul>
   );
@@ -23,18 +23,19 @@ const SidebarLinks = () => {
 
 const Logout = () => {
   const { setToken } = useAuth();
-  const deleteToken = () => {
-    console.log('eliminar token');
+  const deleteToken = () => {    
     setToken(null);
   };
   return (
-    <li onClick={() => deleteToken()}>
+    <li> 
+    <button type='button' onClick={() => deleteToken()}>
       <NavLink to='/auth/login' className='sidebar-route text-red-700'>
         <div className='flex items-center'>
           <i className='fas fa-sign-out-alt' />
           <span className='text-sm  ml-2'>Cerrar Sesión</span>
         </div>
       </NavLink>
+      </button>
     </li>
   );
 };
@@ -52,8 +53,10 @@ const Sidebar = () => {
         </div>
       </div>
       <div className='flex md:hidden w-full justify-between bg-gray-800 p-2 text-white'>
-        <i className={`fas fa-${open ? 'times' : 'bars'}`} onClick={() => setOpen(!open)} />
-        <i className='fas fa-home' />
+        <button type='button' onClick={() => setOpen(!open)}>
+         <i className={`fas fa-${open ? 'times' : 'bars'}`}  />
+         </button>
+         <i className='fas fa-home' />
       </div>
       {open && <ResponsiveSidebar />}
       {/* Sidebar ends */}
@@ -61,8 +64,7 @@ const Sidebar = () => {
   );
 };
 
-const ResponsiveSidebar = () => {
-  return (
+const ResponsiveSidebar = () => (
     <div>
       <div
         className='sidebar h-full z-40 absolute md:h-full sm:hidden transition duration-150 ease-in-out'
@@ -75,10 +77,8 @@ const ResponsiveSidebar = () => {
       </div>
     </div>
   );
-};
 
-const SidebarRoute = ({ to, title, icon }) => {
-  return (
+const SidebarRoute = ({ to, title, icon }) => (
     <li>
       <NavLink
         to={to}
@@ -95,6 +95,5 @@ const SidebarRoute = ({ to, title, icon }) => {
       </NavLink>
     </li>
   );
-};
 
 export default Sidebar;

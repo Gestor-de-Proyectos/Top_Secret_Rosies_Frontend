@@ -3,17 +3,19 @@ import { NavLink } from 'react-router-dom';
 import ImagenLogo from './ImagenLogo';
 import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
+import { useUser } from 'context/userContext';
 
 const SidebarLinks = () => {
   return (
     <ul className='mt-12'>
+      <SidebarRouteImagen to='/perfil' title= 'Perfil' icon='fas fa-user'/>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
         <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />
       </PrivateComponent>
       <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-tasks' />
       <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-        <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-user' />
+        <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-users' />
       </PrivateComponent>
       <SidebarRoute to='/' title='Configuración' icon='fas fa-user-cog' />
       <Logout />
@@ -90,6 +92,31 @@ const SidebarRoute = ({ to, title, icon }) => {
       >
         <div className='flex items-center'>
           <i className={icon} />
+          <span className='text-sm  ml-2'>{title}</span>
+        </div>
+      </NavLink>
+    </li>
+  );
+};
+
+const SidebarRouteImagen = ({ to, title, icon}) => {
+  const{userData} = useUser();
+  return (
+    <li>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          isActive
+            ? 'sidebar-route text-white bg-green-700'
+            : 'sidebar-route text-gray-900 hover:text-white hover:bg-green-400'
+        }
+      >
+        <div className='flex items-center'>
+          {userData.foto ? (
+          <img className='h-8 w-8 rounded-full' src={userData.foto} alt='foto'/>
+          ) :(
+            <i className={icon}/>
+          )}
           <span className='text-sm  ml-2'>{title}</span>
         </div>
       </NavLink>

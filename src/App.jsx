@@ -19,7 +19,7 @@ import Category1 from 'pages/category1/CategoryPage1';
 import jwt_decode from 'jwt-decode';
 import 'styles/globals.css';
 import 'styles/tabla.css';
-
+import Profile from 'pages/profile';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -72,6 +72,7 @@ function App() {
         identificacion: decoded.identificacion,
         correo: decoded.correo,
         rol: decoded.rol,
+        foto: decoded.foto,
       });
     }
   }, [authToken]);
@@ -91,6 +92,7 @@ function App() {
                 <Route path='/proyectos' element={<IndexProyectos />} />
                 <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />  
                 <Route path='/inscripciones' element={<IndexInscripciones />} /> 
+                <Route path='/perfil' element={<Profile/>} />  
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>

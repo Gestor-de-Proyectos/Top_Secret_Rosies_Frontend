@@ -16,6 +16,7 @@ import NuevoProyecto from 'pages/proyectos/nuevoProyecto';
 import IndexInscripciones from 'pages/inscripciones';
 import Inicio from './pages/Inicio';
 import Category1 from 'pages/category1/CategoryPage1';
+import IndexAvance from 'pages/avances/index';
 import jwt_decode from 'jwt-decode';
 import 'styles/globals.css';
 import 'styles/tabla.css';
@@ -94,6 +95,7 @@ function App() {
                 <Route path='/inscripciones' element={<IndexInscripciones />} /> 
                 <Route path='/perfil' element={<Profile/>} />  
                 <Route path='category1/page1' element={<Category1 />} />
+                <Route path= '/avances' element={<IndexAvance />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />

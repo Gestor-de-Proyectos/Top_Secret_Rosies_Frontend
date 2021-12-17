@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom';
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
-import {  AccordionStyled,  AccordionSummaryStyled,  AccordionDetailsStyled,} from 'components/Accordion';
+import { AccordionStyled, AccordionSummaryStyled, AccordionDetailsStyled, } from 'components/Accordion';
+
 
 const IndexProyectos = () => {
   const { data: queryData, loading, error } = useQuery(PROYECTOS);
@@ -164,13 +165,31 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
   }, [data]);
 
   const confirmarInscripcion = () => {
-    crearInscripcion({ variables: { proyecto: idProyecto, estudiante: userData._id } });
+    crearInscripcion({ 
+      variables: { proyecto: idProyecto, estudiante: userData._id }, 
+    });
   };
 
   return (
     <>
       {estadoInscripcion !== '' ? (
-        <span>Ya estas inscrito en este proyecto y el estado es {estadoInscripcion}</span>
+         <span>
+         Ya estas inscrito en este proyecto y el estado es {estadoInscripcion}
+       </span>
+        //  <div className='flex flex-col items-start'>
+        //  <span>
+        //    Ya estas inscrito en este proyecto y el estado es{' '}
+        //    {estadoInscripcion}
+        //  </span>
+        //  {estadoInscripcion === 'ACEPTADO' && (
+        //    <Link
+        //      to={`/avances/${idProyecto}`}
+        //      className='bg-yellow-700 p-2 rounded-lg text-white my-2 hover:bg-yellow-500'
+        //    >
+        //      Agregar Avance
+        //    </Link>
+        //  )}
+        //  </div>
       ) : (
         <ButtonLoading
           onClick={() => confirmarInscripcion()}

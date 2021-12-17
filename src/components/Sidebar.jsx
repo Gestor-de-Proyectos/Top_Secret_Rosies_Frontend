@@ -11,7 +11,7 @@ import { useUser } from 'context/userContext';
 const SidebarLinks = () => {
   return (
     <ul className='mt-12'>
-      <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
+      <SidebarRoute to='/home' title='Inicio' icon='fas fa-home' />
       <SidebarRoute to='/perfil' title='Perfil' icon='fas fa-user-cog' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
         <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />

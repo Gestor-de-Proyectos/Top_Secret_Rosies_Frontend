@@ -15,24 +15,37 @@ const Register = () => {
   const navigate = useNavigate();
   const { form, formData, updateFormData } = useFormData();
 
-  const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
+  const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation },] =
     useMutation(REGISTRO);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    registro({ variables: formData });
-  };
-
+    const submitForm = (e) => {
+      e.preventDefault();
+      registro({ variables: formData });
+    };
+  
   useEffect(() => {
     if (dataMutation) {
       if (dataMutation.registro.token) {
-        setToken(dataMutation.registro.token);{ 
-        toast.success('Usuario creado correctamente'); }      
-        navigate('/auth/login');
+        setToken(dataMutation.registro.token); {
+          toast.success("Usuario creado correctamente")
+        }            
+        navigate('/home');
+      }
+      else {
+        toast.error("El correo o identificación ingresados ya existen")
       }
     }
   }, [dataMutation, setToken, navigate]);
 
+  useEffect(() => {{
+  if (errorMutation) {
+    toast.error("Algo salió mal, intenta de nuevo");
+  }
+  navigate('/auth/register');
+  }  
+}, [errorMutation]);
+
+  
   return (
     <div className='flex flex-col h-full w-full items-center justify-center'>
       <h1 className='text-3xl font-bold my-4'>Regístrate</h1>

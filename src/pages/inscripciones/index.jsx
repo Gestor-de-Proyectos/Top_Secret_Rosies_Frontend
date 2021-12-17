@@ -44,7 +44,7 @@ const AccordionInscripcion = ({ data, titulo, refetch = () => {} }) => {
   return (
     <AccordionStyled>
       <AccordionSummaryStyled>
-        {titulo} ({data.length})
+        <div className='text-gray-50'>{titulo} ({data.length})</div>
       </AccordionSummaryStyled>
       <AccordionDetailsStyled>
         <div className='flex'>
@@ -104,12 +104,12 @@ const Inscripcion = ({ inscripcion, refetch }) => {
   };
 
   return (
-    <div className='bg-gray-50 flex flex-col p-6 m-2 rounded-lg items-center justify-center shadow-xl'>
+    <div className='bg-gray-50 flex flex-col p-6 m-2 capitalize rounded-lg items-center justify-center shadow-xl'>
       <span className='text-lg font-bold '>{inscripcion.proyecto.nombre}</span>
       <span className='text-green-700'>{inscripcion.estudiante.nombre}</span>
       <span>{inscripcion.estado}</span>
       {inscripcion.estado === 'PENDIENTE' && (
-        <div><ButtonLoading
+        <div className='flex-col flex'><ButtonLoading
           onClick={() => {
             cambiarEstadoInscripcion();
           }}

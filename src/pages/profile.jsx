@@ -87,7 +87,7 @@ const Profile = () => {
             <button
               type='button'
               onClick={() => setEditFoto(true)}
-              className='bg-green-700 p-1 my-2 rounded-md text-white'
+              className='bg-indigo-300 p-1 my-2 rounded-md text-white'
             >
               Cambiar imagen
             </button>
@@ -98,7 +98,7 @@ const Profile = () => {
             <button
               type='button'
               onClick={() => setEditFoto(false)}
-              className='bg-green-700 p-1 my-2 rounded-md text-white'
+              className='bg-indigo-300 p-1 my-2 rounded-md text-white'
             >
               Cancelar
             </button>

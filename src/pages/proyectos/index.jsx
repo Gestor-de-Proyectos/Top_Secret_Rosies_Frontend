@@ -15,18 +15,20 @@ import { toast } from 'react-toastify';
 import {  AccordionStyled,  AccordionSummaryStyled,  AccordionDetailsStyled,} from 'components/Accordion';
 
 const IndexProyectos = () => {
-  const { queryData, loading, error } = useQuery(PROYECTOS);
+  const { data: queryData, loading, error } = useQuery(PROYECTOS);
 
   useEffect(() => {
-    console.log('datos proyecto', queryData);
-  }, [queryData]);
+    if (error) {
+      toast.error('Error consultando los proyectos');
+    }
+  }, [error]);
 
   if (loading) return <div>Cargando...</div>;
 
   if (queryData.Proyectos) {
       return (
       <div className='p-10 flex flex-col items-center'>
-        <h1 className='text-gray-900 text-xl font-bold uppercase'>Proyectos</h1>
+        <h1 className='text-green-900 text-xl font-bold uppercase'>Proyectos</h1>
         <div className='self-end my-5'>
           <button className='bg-green-700 p-2 rounded-lg shadow-sm text-white hover:bg-green-400'>
             <Link to='/proyectos/nuevo'>Crear nuevo proyecto</Link>

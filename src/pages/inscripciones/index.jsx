@@ -3,6 +3,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import PrivateRoute from 'components/PrivateRoute';
 import { GET_INSCRIPCIONES } from 'graphql/inscripciones/queries';
 import { APROBAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
+import { RECHAZAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import ButtonLoading from 'components/ButtonLoading';
 import { toast } from 'react-toastify';
 import {  AccordionStyled,  AccordionSummaryStyled,  AccordionDetailsStyled,} from 'components/Accordion';
@@ -13,6 +14,7 @@ const IndexInscripciones = () => {
   useEffect(() => {
     console.log(data);
   }, [data]);
+
   if (loading) return <div>Loading...</div>;
   return (
     <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
@@ -57,9 +59,10 @@ const AccordionInscripcion = ({ data, titulo, refetch = () => {} }) => {
 };
 
 const Inscripcion = ({ inscripcion, refetch }) => {
-  const [aprobarInscripcion, { data, loading, error }] = useMutation(APROBAR_INSCRIPCION);
-
-  useEffect(() => {
+  const [aprobarInscripcion, { data: data, loading: loading, error }] =
+    useMutation(APROBAR_INSCRIPCION);
+  
+    useEffect(() => {
     if (data) {
       toast.success('Inscripcion aprobada con exito');
       refetch();
@@ -72,10 +75,30 @@ const Inscripcion = ({ inscripcion, refetch }) => {
     }
   }, [error]);
 
+  const [rechazarInscripcion, { data: mutationData, loading: mutationLoading }] =
+    useMutation(RECHAZAR_INSCRIPCION);
+  
+  useEffect(() => {
+    if (mutationData) {
+      toast.success('Inscripcion rechazada con exito');
+      refetch();
+    }
+  }, [mutationData]);
+ 
+  
+
   const cambiarEstadoInscripcion = () => {
     aprobarInscripcion({
       variables: {
         aprobarInscripcionId: inscripcion._id,
+      },
+    });
+  };
+
+    const cambiarEstadoInscripcion_R = () => {
+    rechazarInscripcion({
+      variables: {
+        rechazarInscripcionId: inscripcion._id,
       },
     });
   };
@@ -96,10 +119,10 @@ const Inscripcion = ({ inscripcion, refetch }) => {
         />
         <ButtonLoading
         onClick={() => {
-          cambiarEstadoInscripcion();
+          cambiarEstadoInscripcion_R();
         }}
         text='Rechazar'
-        loading={loading}
+        loading={mutationLoading.RECHAZAR_INSCRIPCION}
         disabled={false}
       />
       </div>

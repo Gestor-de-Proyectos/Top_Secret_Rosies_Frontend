@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
-import { PROYECTOS } from 'graphql/proyectos/queries';
-import DropDown from 'components/Dropdown';
-import Input from 'components/Input';
-import { Dialog } from '@mui/material';
-import { Enum_EstadoProyecto } from 'utils/enums';
-import ButtonLoading from 'components/ButtonLoading';
-import { EDITAR_PROYECTO } from 'graphql/proyectos/mutations';
+import ReactLoading from 'react-loading';
 import useFormData from 'hooks/useFormData';
 import PrivateComponent from 'components/PrivateComponent';
+import DropDown from 'components/Dropdown';
+import ButtonLoading from 'components/ButtonLoading';
+import Input from 'components/Input';
+import { useMutation, useQuery } from '@apollo/client';
+import { PROYECTOS } from 'graphql/proyectos/queries';
+import { Dialog } from '@mui/material';
+import { Enum_EstadoProyecto } from 'utils/enums';
+import { EDITAR_PROYECTO, EDITAR_OBJETIVO, ELIMINAR_OBJETIVO } from 'graphql/proyectos/mutations';
 import { Link } from 'react-router-dom';
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
 import { AccordionStyled, AccordionSummaryStyled, AccordionDetailsStyled, } from 'components/Accordion';
-import { ELIMINAR_OBJETIVO } from 'graphql/proyectos/mutations';
-import ReactLoading from 'react-loading';
 import { Enum_TipoObjetivo } from 'utils/enums';
-import { EDITAR_OBJETIVO } from 'graphql/proyectos/mutations';
 
 
 const IndexProyectos = () => {

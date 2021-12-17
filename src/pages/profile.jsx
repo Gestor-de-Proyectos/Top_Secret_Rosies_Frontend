@@ -98,7 +98,7 @@ const Profile = () => {
             <button
               type='button'
               onClick={() => setEditFoto(false)}
-              className='bg-indigo-300 p-1 my-2 rounded-md text-white'
+              className='bg-green-700 p-2 rounded-lg shadow-sm text-white hover:bg-green-400'
             >
               Cancelar
             </button>

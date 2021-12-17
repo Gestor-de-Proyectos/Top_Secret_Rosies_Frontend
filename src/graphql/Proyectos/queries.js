@@ -12,7 +12,6 @@ const PROYECTOS = gql`
       }
       lider {
         _id
-        nombre
         correo
       }
     }

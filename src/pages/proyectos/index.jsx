@@ -9,17 +9,14 @@ import { useMutation, useQuery } from '@apollo/client';
 import { PROYECTOS } from 'graphql/proyectos/queries';
 import { Dialog } from '@mui/material';
 import { Enum_EstadoProyecto } from 'utils/enums';
-<<<<<<< HEAD
 import { Enum_FaseProyecto } from 'utils/enums';
 import ButtonLoading from 'components/ButtonLoading';
 import { EDITAR_PROYECTO } from 'graphql/proyectos/mutations';
 import useFormData from 'hooks/useFormData';
 import PrivateComponent from 'components/PrivateComponent';
 import { Link, useNavigate } from 'react-router-dom';
-=======
 import { EDITAR_PROYECTO, EDITAR_OBJETIVO, ELIMINAR_OBJETIVO } from 'graphql/proyectos/mutations';
 import { Link } from 'react-router-dom';
->>>>>>> 7b1a8829c54efcf13cfbb71aff5805b3bca38ffe
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';

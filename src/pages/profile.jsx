@@ -76,31 +76,6 @@ const Profile = () => {
           type='text'
           required
         />
-<<<<<<< HEAD
-        {queryData.Usuario.foto && !editFoto ? (
-          <div className='flex flex-col items-center'>
-            <button
-              type='button'
-              onClick={() => setEditFoto(true)}
-              className='bg-indigo-300 p-1 my-2 rounded-md text-white'
-            >
-              Cambiar imagen
-            </button>
-          </div>
-        ) : (
-          <div>
-            
-            <button
-              type='button'
-              onClick={() => setEditFoto(false)}
-              className='bg-green-700 p-2 rounded-lg shadow-sm text-white hover:bg-green-400'
-            >
-              Cancelar
-            </button>
-          </div>
-        )}
-=======
->>>>>>> 7b1a8829c54efcf13cfbb71aff5805b3bca38ffe
         <ButtonLoading
           text='Confirmar'
           loading={loadingMutation}

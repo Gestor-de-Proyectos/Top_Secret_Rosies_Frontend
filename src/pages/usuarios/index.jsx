@@ -13,7 +13,7 @@ const IndexUsuarios = () => {
     if (error) {
       toast.error('Error consultando los usuarios');
     }
-  }, [error]);
+  }, [error, ]);
 
   if (loading) return <div>Cargando....</div>;
 

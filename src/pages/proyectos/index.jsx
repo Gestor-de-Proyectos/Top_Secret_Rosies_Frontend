@@ -5,11 +5,12 @@ import DropDown from 'components/Dropdown';
 import Input from 'components/Input';
 import { Dialog } from '@mui/material';
 import { Enum_EstadoProyecto } from 'utils/enums';
+import { Enum_FaseProyecto } from 'utils/enums';
 import ButtonLoading from 'components/ButtonLoading';
 import { EDITAR_PROYECTO } from 'graphql/proyectos/mutations';
 import useFormData from 'hooks/useFormData';
 import PrivateComponent from 'components/PrivateComponent';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
@@ -107,6 +108,7 @@ const AccordionProyecto = ({ proyecto }) => {
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
   const [editarProyecto, { data: dataMutation, loading, error }] = useMutation(EDITAR_PROYECTO);
+  const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -121,10 +123,15 @@ const FormEditProyecto = ({ _id }) => {
   useEffect(() => {
     console.log('data mutation', dataMutation);
   }, [dataMutation]);
+  useEffect(() => {
+    if (dataMutation) {   
+      toast.success("Cambios a proyecto realizados con éxito");                   
+      }      
+  }, [dataMutation, navigate]);
 
   return (
     <div className='p-4'>
-      <h1 className='font-bold'>Modificar Estado del Proyecto</h1>
+      <h1 className='font-bold'>Modificar Proyecto</h1>
       <form
         ref={form}
         onChange={updateFormData}
@@ -132,6 +139,7 @@ const FormEditProyecto = ({ _id }) => {
         className='flex flex-col items-center'
       >
         <DropDown label='Estado del Proyecto' name='estado' options={Enum_EstadoProyecto} />
+        <DropDown label='Fase del Proyecto' name='fase' options={Enum_FaseProyecto} />
         <ButtonLoading disabled={false} loading={loading} text='Confirmar' />
       </form>
     </div>
@@ -164,7 +172,7 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
     <div className='mx-5 my-4 bg-gray-50 p-8 rounded-lg flex flex-col items-center justify-center shadow-xl'>
       <div className='text-lg font-bold'>{tipo}</div>
       <div>{descripcion}</div>
-      <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+      <PrivateComponent roleList={['LIDER']}>
         <div className='flex my-2'>
           <i
             onClick={() => setShowEditDialog(true)}

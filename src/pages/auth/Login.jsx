@@ -6,6 +6,7 @@ import useFormData from 'hooks/useFormData';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from 'graphql/auth/mutations';
 import { useAuth } from 'context/authContext';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,8 +30,18 @@ const Login = () => {
         setToken(dataMutation.login.token);
         navigate('/home');
       }
+      else{
+        toast.error('correo o contraseña incorrecto')
+      }
     }
   }, [dataMutation, setToken, navigate]);
+
+  useEffect(() => {
+    if (mutationError) {
+      toast.error("Algo salió mal, intenta de nuevo");
+    }     
+  }, [mutationError]);
+
     return( 
         <div className='max-w-md w-full space-y-8'>
             <h2 className='mt-6 text-center text-3xl font-bold text-gray-900'>

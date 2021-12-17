@@ -43,7 +43,7 @@ const Register = () => {
   }
   navigate('/auth/register');
   }  
-}, [errorMutation]);
+}, [errorMutation, navigate]);
 
   
   return (

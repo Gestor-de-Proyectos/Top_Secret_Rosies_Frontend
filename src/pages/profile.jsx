@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import ButtonLoading from 'components/ButtonLoading';
 import Input from 'components/Input';
-import { EDITAR_PERFIL } from 'graphql/usuarios/mutations';
+import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import useFormData from 'hooks/useFormData';
 import { uploadFormData } from 'utils/uploadFormData';
 import { useUser } from 'context/userContext';
@@ -16,7 +16,7 @@ const Profile = () => {
 
   // falta capturar error de mutacion
   const [editarPerfil, { data: dataMutation, loading: loadingMutation }] =
-    useMutation(EDITAR_PERFIL);
+    useMutation(EDITAR_USUARIO);
 
   // falta capturar error de query
   const {
@@ -79,11 +79,6 @@ const Profile = () => {
         />
         {queryData.Usuario.foto && !editFoto ? (
           <div className='flex flex-col items-center'>
-            <img
-              className='h-32'
-              src={queryData.Usuario.foto}
-              alt='Foto Usuario'
-            />
             <button
               type='button'
               onClick={() => setEditFoto(true)}
@@ -94,7 +89,7 @@ const Profile = () => {
           </div>
         ) : (
           <div>
-            <Input label='Foto' name='foto' type='file' required />
+            
             <button
               type='button'
               onClick={() => setEditFoto(false)}

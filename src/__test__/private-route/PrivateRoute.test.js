@@ -19,6 +19,34 @@ it('renders the page when roles match', () => {
   expect(screen.getByTestId('authorized')).toHaveTextContent('Page');
 });
 
+it('renders the page when roles match', () => {
+    render(
+      <UserContext.Provider value={{ userData: { rol: 'ESTUDIANTE' } }}>
+        <PrivateRoute roleList={['ESTUDIANTE']}>
+          <div data-testid='authorized'>Page</div>
+        </PrivateRoute>
+      </UserContext.Provider>
+    );
+  
+  
+    expect(screen.getByTestId('authorized')).toHaveTextContent('Page');
+  });
+
+  it('renders unauthorized when roles dont match', () => {
+    render(
+      <UserContext.Provider value={{ userData: { rol: 'ESTUDIANTE' } }}>
+        <PrivateRoute roleList={['LIDER']}>
+          <div>Page</div>
+        </PrivateRoute>
+      </UserContext.Provider>
+    );
+  
+  
+    expect(screen.getByTestId('unauthorized')).toHaveTextContent(
+      'No estás autorizado para ver este sitio.'
+    );
+  });
+
 it('renders unauthorized when roles dont match', () => {
   render(
     <UserContext.Provider value={{ userData: { rol: 'LIDER' } }}>
@@ -28,7 +56,7 @@ it('renders unauthorized when roles dont match', () => {
     </UserContext.Provider>
   );
 
-  
+
   expect(screen.getByTestId('unauthorized')).toHaveTextContent(
     'No estás autorizado para ver este sitio.'
   );

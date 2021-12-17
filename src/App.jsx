@@ -93,9 +93,8 @@ function App() {
                 <Route path='/proyectos' element={<IndexProyectos />} />
                 <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />  
                 <Route path='/inscripciones' element={<IndexInscripciones />} /> 
-                <Route path='/perfil' element={<Profile/>} />  
-                <Route path='category1/page1' element={<Category1 />} />
-                <Route path= '/avances' element={<IndexAvance />} />
+                <Route path='/avances' element={<IndexAvance />} />
+                <Route path='/perfil' element={<Profile/>} />                                  
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />

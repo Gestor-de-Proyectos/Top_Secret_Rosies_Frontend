@@ -11,21 +11,18 @@ import { useUser } from 'context/userContext';
 const SidebarLinks = () => {
   return (
     <ul className='mt-12'>
-      <SidebarRouteImagen to='/perfil' title= 'Perfil' icon='fas fa-user'/>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
+      <SidebarRoute to='/perfil' title='Perfil' icon='fas fa-user-cog' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
         <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />
       </PrivateComponent>
-      <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-        <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-users' />
-      </PrivateComponent>
-<<<<<<< HEAD
-      <SidebarRoute to='/' title='Perfil' icon='fas fa-user-cog' />
-=======
       <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-tasks' />  
+      <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+        <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-user' />
+      </PrivateComponent>
+      
       <SidebarRoute to='/avances' title='Avances' icon='fas fa-book-open'/>
-      <SidebarRoute to='/' title='Configuración' icon='fas fa-user-cog' />
->>>>>>> inscripciones
+      
       <Logout />
     </ul>
   );

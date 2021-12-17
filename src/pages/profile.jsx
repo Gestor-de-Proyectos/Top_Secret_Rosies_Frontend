@@ -9,8 +9,7 @@ import { useUser } from 'context/userContext';
 import { GET_USUARIO } from 'graphql/usuarios/queries';
 import { toast } from 'react-toastify';
 
-const Profile = () => {
-  const [editFoto, setEditFoto] = useState(false);
+const Profile = () => {  
   const { form, formData, updateFormData } = useFormData();
   const { userData, setUserData } = useUser();
 
@@ -31,7 +30,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (dataMutation) {
-      setUserData({ ...userData, foto: dataMutation.editarPerfil.foto });
+      setUserData({ ...userData});
       toast.success('Perfil modificado con exito');
       refetch();
     }
@@ -77,6 +76,7 @@ const Profile = () => {
           type='text'
           required
         />
+<<<<<<< HEAD
         {queryData.Usuario.foto && !editFoto ? (
           <div className='flex flex-col items-center'>
             <button
@@ -99,6 +99,8 @@ const Profile = () => {
             </button>
           </div>
         )}
+=======
+>>>>>>> 7b1a8829c54efcf13cfbb71aff5805b3bca38ffe
         <ButtonLoading
           text='Confirmar'
           loading={loadingMutation}

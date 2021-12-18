@@ -10,6 +10,7 @@ const Input = ({ label, name, defaultValue, type, required }) => {
         name={name}
         className='input'
         defaultValue={defaultValue}
+        data-testid='input-test'
       />
     </label>
   );

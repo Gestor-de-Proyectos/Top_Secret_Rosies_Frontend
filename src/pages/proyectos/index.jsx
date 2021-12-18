@@ -67,8 +67,8 @@ const AccordionProyecto = ({ proyecto }) => {
             <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
-          <PrivateComponent roleList={['LIDER']}>
-            <InscripcionProyecto roleList={['ESTUDIANTE']}
+          <PrivateComponent roleList={['ESTUDIANTE']}>
+            <InscripcionProyecto 
               idProyecto={proyecto._id}
               estado={proyecto.estado}
               inscripciones={proyecto.inscripciones}

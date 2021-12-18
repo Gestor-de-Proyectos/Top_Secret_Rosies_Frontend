@@ -22,13 +22,12 @@ import {
   AccordionSummaryStyled,
   AccordionDetailsStyled,
 } from 'components/Accordion';
-
 import ReactLoading from 'react-loading';
 
 const IndexProyectos = () => {
   const { data: queryData, loading } = useQuery(PROYECTOS);
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <div> Cargando...</div>;
 
   if (queryData.Proyectos) {
     return (
@@ -42,9 +41,9 @@ const IndexProyectos = () => {
           <div className='my-2 self-end'>
             <button
               type='button'
-              className='bg-indigo-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-indigo-400'
+              className='bg-green-700 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-green-400'
             >
-              <Link to='/proyectos/nuevo'>Crear nuevo proyecto</Link>
+              <Link to='/proyectos/nuevo'> Crear nuevo proyecto</Link>
             </button>
           </div>
         </PrivateComponent>
@@ -73,7 +72,7 @@ const AccordionProyecto = ({ proyecto }) => {
           </div>
         </AccordionSummaryStyled>
         <AccordionDetailsStyled>
-          <PrivateComponent roleList={['ADMINISTRADOR']}>
+          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <button
               type='button'
               onClick={() => {
@@ -83,7 +82,7 @@ const AccordionProyecto = ({ proyecto }) => {
               <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
-          <PrivateComponent roleList={['ESTUDIANTE']}>
+          <PrivateComponent roleList={['LIDER','ESTUDIANTE']}>
             <InscripcionProyecto
               idProyecto={proyecto._id}
               estado={proyecto.estado}
@@ -164,7 +163,7 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
 
   useEffect(() => {
     if (dataMutationEliminar) {
-      toast.success('objetivo eliminado satisfactoriamente');
+      toast.success('Objetivo eliminado con exito');
     }
   }, [dataMutationEliminar]);
 
@@ -311,9 +310,9 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
           {estadoInscripcion === 'ACEPTADO' && (
             <Link
               to={`/avances/${idProyecto}`}
-              className='bg-yellow-700 p-2 rounded-lg text-white my-2 hover:bg-yellow-500'
+              className='bg-green-700 p-2 rounded-lg text-white my-2 hover:bg-green-400'
             >
-              Agregar Avance
+              Visualizar Avances
             </Link>
           )}
         </div>

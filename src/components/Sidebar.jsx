@@ -5,9 +5,6 @@ import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
 import { useUser } from 'context/userContext';
 
-
-
-
 const SidebarLinks = () => {
   return (
     <ul className='mt-12'>

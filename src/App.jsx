@@ -10,6 +10,7 @@ import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import Index from 'pages/Index';
 import IndexUsuarios from 'pages/usuarios/index';
+import IndexUsuariosLider from 'pages/usuarios/indexLider';
 import EditarUsuario from 'pages/usuarios/editar';
 import IndexProyectos from 'pages/proyectos/index';
 import NuevoProyecto from 'pages/proyectos/nuevoProyecto';
@@ -89,6 +90,7 @@ function App() {
               <Route path='/' element={<PrivateLayout />}>
                 <Route path='home' element={<Index />} />
                 <Route path='/usuarios' element={<IndexUsuarios />} />
+                <Route path='/usuariosLider' element={<IndexUsuariosLider />} />
                 <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
                 <Route path='/proyectos' element={<IndexProyectos />} />
                 <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />  

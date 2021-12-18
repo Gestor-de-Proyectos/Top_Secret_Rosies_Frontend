@@ -95,7 +95,7 @@ function App() {
                 <Route path='/proyectos' element={<IndexProyectos />} />
                 <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />  
                 <Route path='/inscripciones' element={<IndexInscripciones />} /> 
-                <Route path='/avances' element={<IndexAvance />} />
+                <Route path='/avances/:projectid' element={<IndexAvance />} />
                 <Route path='/perfil' element={<Profile/>} />                                  
               </Route>
               <Route path='/auth' element={<AuthLayout />}>

@@ -57,7 +57,7 @@ const AccordionProyecto = ({ proyecto }) => {
           </div>
         </AccordionSummaryStyled>
         <AccordionDetailsStyled>
-          <PrivateComponent roleList={['ADMINISTRADOR']}>
+          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <button
               type='button'
               onClick={() => {
@@ -67,8 +67,8 @@ const AccordionProyecto = ({ proyecto }) => {
             <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
-          <PrivateComponent roleList={['ESTUDIANTE']}>
-            <InscripcionProyecto
+          <PrivateComponent roleList={['LIDER']}>
+            <InscripcionProyecto roleList={['ESTUDIANTE']}
               idProyecto={proyecto._id}
               estado={proyecto.estado}
               inscripciones={proyecto.inscripciones}
@@ -276,7 +276,7 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
           {estadoInscripcion === 'ACEPTADO' && (
             <Link
               to={`/avances/${idProyecto}`}
-              className='bg-yellow-700 p-2 rounded-lg text-white my-2 hover:bg-yellow-500'
+              className='bg-green-700 p-2 rounded-lg text-white my-2 hover:bg-green-500'
             >
               Visualizar Avances
             </Link>

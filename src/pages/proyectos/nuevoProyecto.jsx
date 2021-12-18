@@ -50,7 +50,7 @@ const NuevoProyecto = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <PrivateRoute roleList={['LIDER']}>
+    <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div className='p-10'>
         <Link to='/proyectos'>
           <i className='fas fa-arrow-left' />

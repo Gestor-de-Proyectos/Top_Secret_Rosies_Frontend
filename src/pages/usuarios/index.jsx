@@ -7,22 +7,18 @@ import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
 import PrivateRoute from 'components/PrivateRoute';
 
 const IndexUsuarios = () => {
-  const { data, error, loading } = useQuery(GET_USUARIOS, {
-    variables: {
-      filtro: { rol: 'ESTUDIANTE' },
-    },
-  });
+  const { data, error, loading } = useQuery(GET_USUARIOS);
 
   useEffect(() => {
     if (error) {
       toast.error('Error consultando los usuarios');
     }
-  }, [error, ]);
+  }, [error]);
 
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <PrivateRoute roleList={['LIDER', 'ADMINISTRADOR']}>
+    <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div className='p-10 flex flex-col items-center'>
         <h1 className='text-green-900 text-xl font-bold uppercase'>Usuarios</h1>
         <table className='tabla'>

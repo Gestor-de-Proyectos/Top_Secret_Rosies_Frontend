@@ -44,7 +44,7 @@ const AccordionInscripcion = ({ data, titulo, refetch = () => {} }) => {
   return (
     <AccordionStyled>
       <AccordionSummaryStyled>
-        {titulo} ({data.length})
+      <div className='text-gray-50'>{titulo} ({data.length})</div>
       </AccordionSummaryStyled>
       <AccordionDetailsStyled>
         <div className='flex'>

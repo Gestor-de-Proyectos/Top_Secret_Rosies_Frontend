@@ -12,6 +12,7 @@ const httpLink = createHttpLink({
   uri: 'http://localhost:3050/api/graphql',
 });
 
+
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = JSON.parse(localStorage.getItem('token'));
@@ -24,10 +25,14 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink),
 });
+
+
+
 
 test('testing login route', () => {
   const history = createMemoryHistory();
@@ -44,6 +49,7 @@ test('testing login route', () => {
       </AuthContext.Provider>
     </ApolloProvider>
   );
+
 
   expect(screen.getByTestId('login-page')).toBeInTheDocument();
 });

@@ -90,7 +90,7 @@ const Avance = ({ avance }) => {
           onClick={() => {
             setOpenDialog(true);
           }}
-          className='bg-indigo-500 p-2  my-2 rounded-lg w-48 text-white hover:bg-indigo-700'
+          className='bg-green-700 p-2  my-2 rounded-lg w-48 text-white hover:bg-green-400'
           type='button'
         >
           Agregar observacion

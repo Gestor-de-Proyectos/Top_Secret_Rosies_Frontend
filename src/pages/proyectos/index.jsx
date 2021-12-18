@@ -67,12 +67,12 @@ const AccordionProyecto = ({ proyecto }) => {
             <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
-          <PrivateComponent roleList={['LIDER']}>
-            <InscripcionProyecto roleList={['ESTUDIANTE']}
+          <PrivateComponent roleList={['LIDER', 'ESTUDIANTE']}>            
+            <InscripcionProyecto 
               idProyecto={proyecto._id}
               estado={proyecto.estado}
               inscripciones={proyecto.inscripciones}
-            />
+            /> 
           </PrivateComponent>
           <div>Liderado Por: {proyecto.lider.correo}</div>
           <div className='flex'>
@@ -279,10 +279,12 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     <>
       {estadoInscripcion !== '' ? (
         <div className='flex flex-col items-start'>
+          <PrivateComponent roleList={['ESTUDIANTE']}>
           <span>
             Ya estas inscrito en este proyecto y el estado es{' '}
             {estadoInscripcion}
           </span>
+          </PrivateComponent>
           {estadoInscripcion === 'ACEPTADO' && (
             <Link
               to={`/avances/${idProyecto}`}
@@ -293,12 +295,14 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
           )}
         </div>
       ) : (
+        <PrivateComponent roleList={['ESTUDIANTE']}>
         <ButtonLoading
           onClick={() => confirmarInscripcion()}
           disabled={estado === 'INACTIVO'}
           loading={loading}
           text='Inscribirme en este proyecto'
         />
+        </PrivateComponent>
       )}
     </>
   );

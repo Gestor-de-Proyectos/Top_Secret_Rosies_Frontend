@@ -28,7 +28,7 @@ const IndexAvance = () => {
   return (
     <div className='flex flex-col p-10 items-center w-full'>
       <h1 className='text-2xl font-bold text-gray-900 my-2'>
-        Avances para el proyecto {projectid}
+        Avances del proyecto {projectid}
       </h1>
       <button
         onClick={() => setOpenDialog(true)}
@@ -60,7 +60,6 @@ const Avance = ({ avance }) => {
         <strong>Fecha: </strong>
         {avance.fecha}
         </span>
-      {/* <span>{avance.observaciones.length === 0 ?'Sin comentarios':}</span> */}
       <div className='flex  my-4'>
         {avance.observaciones.length === 0 ? (
           <span>Sin Observaciones</span>
@@ -69,16 +68,16 @@ const Avance = ({ avance }) => {
             {avance.observaciones.map((obs, index) => {
               return (
                 <div
-                  key={nanoid()}
-                  className='bg-white w-32 m-2 p-2 rounded-lg shadow-lg flex flex-col'
+                   key={nanoid()}
+                   className='bg-white w-32 m-2 p-2 rounded-lg shadow-lg flex-col'
                 >
-                  <span>
+                  <span key={nanoid()}>
                     {index + 1}. {obs}
                   </span>
-                  <div className='flex items-end justify-center my-2'>
+                  {/* <div className='flex items-end justify-center my-2'>
                     <i className='fas fa-pen mx-2' />
                     <i className='fas fa-trash mx-2' />
-                  </div>
+                  </div> */}
                 </div>
               );
             })}
@@ -110,7 +109,6 @@ const Avance = ({ avance }) => {
 
 const AgregarObservacion = ({ _id, setOpenDialog }) => {
   const { formData, form, updateFormData } = useFormData();
-
   const [crearObservacion, { loading }] = useMutation(CREAR_OBSERVACION, {
     refetchQueries: [GET_AVANCES],
   });
@@ -124,11 +122,11 @@ const AgregarObservacion = ({ _id, setOpenDialog }) => {
       },
     })
       .then(() => {
-        toast.success('observacion agregado exitosamente');
+        toast.success('observación agregada con exito');
         setOpenDialog(false);
       })
       .catch(() => {
-        toast.error('error agregando observacion');
+        toast.error('error agregando observación');
       });
   };
   return (

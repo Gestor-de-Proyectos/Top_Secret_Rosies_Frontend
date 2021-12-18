@@ -5,11 +5,7 @@ import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
 import { useUser } from 'context/userContext';
 
-
-
-
-const SidebarLinks = () => {
-  return (
+const SidebarLinks = () => (
     <ul className='mt-12'>
       <SidebarRoute to='/' title='Inicio' icon='fas fa-home' />
       <SidebarRoute to='/perfil' title='Perfil' icon='fas fa-user-cog' />
@@ -26,7 +22,6 @@ const SidebarLinks = () => {
       <Logout />
     </ul>
   );
-};
 
 const Logout = () => {
   const { setToken } = useAuth();

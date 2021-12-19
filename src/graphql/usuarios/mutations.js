@@ -29,13 +29,25 @@ const EDITAR_USUARIO = gql`
 `;
 
 const EDITAR_PERFIL = gql`
-  mutation EditarPerfil($_id: String!, $campos: CamposEditarPerfil!) {
-    editarPerfil(_id: $_id, campos: $campos) {
+  mutation EditarPerfil(
+    $_id: String!
+    $nombre: String!
+    $apellido: String!
+    $identificacion: String!
+    $correo: String!    
+  ) {
+    editarPerfil(
+      _id: $_id
+      nombre: $nombre
+      apellido: $apellido
+      identificacion: $identificacion
+      correo: $correo
+    ) {
       _id
       nombre
       apellido
       identificacion
-      foto
+      correo             
     }
   }
 `;

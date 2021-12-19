@@ -29,7 +29,7 @@ const Register = () => {
         setToken(dataMutation.registro.token); {
           toast.success("Usuario creado correctamente")
         }            
-        navigate('/home');
+        navigate('/auth/login');
       }
       else {
         toast.success("El correo o identificación ingresados ya existen")

@@ -14,7 +14,11 @@ const Login = () => {
   const { form, formData, updateFormData } = useFormData();
 
   const [login, { data: dataMutation, loading: mutationLoading, error: mutationError }] =
-    useMutation(LOGIN);
+    useMutation(LOGIN, {
+      variables: {
+        filtro: { estado: 'AUTORIZADO' },
+      },
+    });
 
   const submitForm = (e) => {
     e.preventDefault();

@@ -67,7 +67,7 @@ const AccordionProyecto = ({ proyecto }) => {
             <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
-          <PrivateComponent roleList={['LIDER', 'ESTUDIANTE']}>            
+          <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
             <InscripcionProyecto 
               idProyecto={proyecto._id}
               estado={proyecto.estado}
@@ -104,9 +104,8 @@ const AccordionProyecto = ({ proyecto }) => {
 
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
-  const [editarProyecto, { data: dataMutation, loading, error }] = useMutation(EDITAR_PROYECTO);
-  const navigate = useNavigate();
-
+  const [editarProyecto, { loading }] = useMutation(EDITAR_PROYECTO);
+  
   const submitForm = (e) => {
     e.preventDefault();
     editarProyecto({
@@ -116,15 +115,6 @@ const FormEditProyecto = ({ _id }) => {
       },
     });
   };
-
-  useEffect(() => {
-    toast.error("error de mutation");
-  }, [error]);
-  useEffect(() => {
-    if (dataMutation) {   
-      toast.success("Cambios a proyecto realizados con éxito");                   
-      }      
-  }, [dataMutation, navigate]);
 
   return (
     <div className='p-4'>

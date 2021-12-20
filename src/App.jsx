@@ -25,7 +25,7 @@ import Profile from 'pages/profile';
 // import PrivateRoute from 'components/PrivateRoute';
 
 const httpLink = createHttpLink ({
-   uri: "https://quiet-cliffs-27491.herokuapp.com/graphql"
+   uri: "https://gestionproyectostsrbd.herokuapp.com/graphql"
  })
 
 /*const httpLink = createHttpLink({

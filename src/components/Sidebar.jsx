@@ -5,7 +5,12 @@ import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
 import { useUser } from 'context/userContext';
 
+<<<<<<< HEAD
 const SidebarLinks = () => (
+=======
+const SidebarLinks = () => {
+  return (
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
     <ul className='mt-12'>
       <SidebarRoute to='/' title='Inicio' icon='fas fa-home' />
       <SidebarRoute to='/perfil' title='Perfil' icon='fas fa-user-cog' />

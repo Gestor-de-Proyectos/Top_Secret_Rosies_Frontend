@@ -25,13 +25,13 @@ import Profile from 'pages/profile';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
-// const httpLink = createHttpLink ({
-//   uri: "https://quiet-cliffs-27491.herokuapp.com/graphql"
-// })
+const httpLink = createHttpLink ({
+   uri: "https://quiet-cliffs-27491.herokuapp.com/graphql"
+ })
 
-const httpLink = createHttpLink({
+/*const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
-});
+});*/
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists

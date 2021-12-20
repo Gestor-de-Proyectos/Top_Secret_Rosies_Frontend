@@ -6,9 +6,15 @@ import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
 import PrivateRoute from 'components/PrivateRoute';
 
+<<<<<<< HEAD
 const IndexUsuarios = () => {  
   const { data, error, loading } = useQuery(GET_USUARIOS);
   
+=======
+const IndexUsuarios = () => {
+  const { data, error, loading } = useQuery(GET_USUARIOS);
+
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
   useEffect(() => {
     if (error) {
       toast.error('Error consultando los usuarios');
@@ -18,7 +24,11 @@ const IndexUsuarios = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
+<<<<<<< HEAD
     <PrivateRoute roleList={['ADMINISTRADOR']}>
+=======
+    <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
       <div className='p-10 flex flex-col items-center'>
         <h1 className='text-green-900 text-xl font-bold uppercase'>Usuarios</h1>
         <table className='tabla'>
@@ -64,4 +74,9 @@ const IndexUsuarios = () => {
   );
 };
 
+<<<<<<< HEAD
 export default IndexUsuarios;
+=======
+
+export default IndexUsuarios;
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50

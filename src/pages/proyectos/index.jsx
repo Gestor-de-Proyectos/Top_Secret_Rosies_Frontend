@@ -1,24 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import ReactLoading from 'react-loading';
 import { useMutation, useQuery } from '@apollo/client';
 import { PROYECTOS } from 'graphql/proyectos/queries';
 import DropDown from 'components/Dropdown';
+import Input from 'components/Input';
 import { Dialog } from '@mui/material';
+<<<<<<< HEAD
 import { Enum_EstadoProyecto,Enum_FaseProyecto, Enum_TipoObjetivo } from 'utils/enums';
+=======
+import { Enum_EstadoProyecto, Enum_TipoObjetivo } from 'utils/enums';
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
 import ButtonLoading from 'components/ButtonLoading';
-import { EDITAR_PROYECTO, EDITAR_OBJETIVO, ELIMINAR_OBJETIVO } from 'graphql/proyectos/mutations';
+import {
+  EDITAR_PROYECTO,
+  ELIMINAR_OBJETIVO,
+  EDITAR_OBJETIVO,
+} from 'graphql/proyectos/mutations';
 import useFormData from 'hooks/useFormData';
 import PrivateComponent from 'components/PrivateComponent';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
+<<<<<<< HEAD
 import { AccordionStyled, AccordionSummaryStyled, AccordionDetailsStyled, } from 'components/Accordion';
 import Input from 'components/Input';
+=======
+import {
+  AccordionStyled,
+  AccordionSummaryStyled,
+  AccordionDetailsStyled,
+} from 'components/Accordion';
+import ReactLoading from 'react-loading';
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
 
 const IndexProyectos = () => {
   const { data: queryData, loading } = useQuery(PROYECTOS);
 
+<<<<<<< HEAD
   if (loading) return <div>Cargando...</div>;
 
   if (queryData.Proyectos) {
@@ -36,6 +54,30 @@ const IndexProyectos = () => {
         </PrivateComponent>
         {queryData.Proyectos.map((proyecto) => (
           <AccordionProyecto proyecto={proyecto} />            
+=======
+  if (loading) return <div> Cargando...</div>;
+
+  if (queryData.Proyectos) {
+    return (
+      <div className='p-10 flex flex-col'>
+        <div className='flex w-full items-center justify-center'>
+          <h1 className='text-2xl font-bold text-gray-900 my-5'>
+            Lista de Proyectos
+          </h1>
+        </div>
+        <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+          <div className='my-2 self-end'>
+            <button
+              type='button'
+              className='bg-green-700 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-green-400'
+            >
+              <Link to='/proyectos/nuevo'> Crear nuevo proyecto</Link>
+            </button>
+          </div>
+        </PrivateComponent>
+        {queryData.Proyectos.map((proyecto) => (
+          <AccordionProyecto proyecto={proyecto} />
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
         ))}
       </div>
     );
@@ -49,7 +91,9 @@ const AccordionProyecto = ({ proyecto }) => {
   return (
     <>
       <AccordionStyled>
-        <AccordionSummaryStyled expandIcon={<i className='fas fa-chevron-down' />}>
+        <AccordionSummaryStyled
+          expandIcon={<i className='fas fa-chevron-down' />}
+        >
           <div className='flex w-full justify-between'>
             <div className='uppercase font-bold text-gray-100 '>
               {proyecto.nombre} - {proyecto.estado}
@@ -63,12 +107,21 @@ const AccordionProyecto = ({ proyecto }) => {
               onClick={() => {
                 setShowDialog(true);
               }}
+<<<<<<< HEAD
             > 
             <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
           <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
             <InscripcionProyecto 
+=======
+            >
+              <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
+            </button>
+          </PrivateComponent>
+          <PrivateComponent roleList={['LIDER','ESTUDIANTE']}>
+            <InscripcionProyecto
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
               idProyecto={proyecto._id}
               estado={proyecto.estado}
               inscripciones={proyecto.inscripciones}
@@ -76,17 +129,15 @@ const AccordionProyecto = ({ proyecto }) => {
           </PrivateComponent>
           <div>Liderado Por: {proyecto.lider.correo}</div>
           <div className='flex'>
-          {proyecto.objetivos.map((objetivo, index) => {
-              return (
-                <Objetivo
-                  index={index}
-                  _id={objetivo._id}
-                  idProyecto={proyecto._id}
-                  tipo={objetivo.tipo}
-                  descripcion={objetivo.descripcion}
-                />
-              );
-            })}
+            {proyecto.objetivos.map((objetivo, index) => (
+              <Objetivo
+                index={index}
+                _id={objetivo._id}
+                idProyecto={proyecto._id}
+                tipo={objetivo.tipo}
+                descripcion={objetivo.descripcion}
+              />
+            ))}
           </div>
         </AccordionDetailsStyled>
       </AccordionStyled>
@@ -104,8 +155,16 @@ const AccordionProyecto = ({ proyecto }) => {
 
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
+<<<<<<< HEAD
   const [editarProyecto, { loading }] = useMutation(EDITAR_PROYECTO);
   
+=======
+
+  // falta capturar error de la mutacion
+  // falta toast de success
+  const [editarProyecto, { loading }] = useMutation(EDITAR_PROYECTO);
+
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
   const submitForm = (e) => {
     e.preventDefault();
     editarProyecto({
@@ -118,15 +177,18 @@ const FormEditProyecto = ({ _id }) => {
 
   return (
     <div className='p-4'>
-      <h1 className='font-bold'>Modificar Proyecto</h1>
+      <h1 className='font-bold'>Modificar Estado del Proyecto</h1>
       <form
         ref={form}
         onChange={updateFormData}
         onSubmit={submitForm}
         className='flex flex-col items-center'
       >
-        <DropDown label='Estado del Proyecto' name='estado' options={Enum_EstadoProyecto} />
-        <DropDown label='Fase del Proyecto' name='fase' options={Enum_FaseProyecto} />
+        <DropDown
+          label='Estado del Proyecto'
+          name='estado'
+          options={Enum_EstadoProyecto}
+        />
         <ButtonLoading disabled={false} loading={loading} text='Confirmar' />
       </form>
     </div>
@@ -135,16 +197,20 @@ const FormEditProyecto = ({ _id }) => {
 
 const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
   const [showEditDialog, setShowEditDialog] = useState(false);
-  const [eliminarObjetivo, { data: dataMutationEliminar, loading: eliminarLoading }] = useMutation(
-    ELIMINAR_OBJETIVO,
-    {
-      refetchQueries: [{ query: PROYECTOS }],
-    }
-  );
+  const [
+    eliminarObjetivo,
+    { data: dataMutationEliminar, loading: eliminarLoading },
+  ] = useMutation(ELIMINAR_OBJETIVO, {
+    refetchQueries: [{ query: PROYECTOS }],
+  });
 
+<<<<<<< HEAD
   useEffect(() => {    
+=======
+  useEffect(() => {
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
     if (dataMutationEliminar) {
-      toast.success('objetivo eliminado satisfactoriamente');
+      toast.success('Objetivo eliminado con exito');
     }
   }, [dataMutationEliminar]);
 
@@ -153,14 +219,25 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
   };
 
   if (eliminarLoading)
-    return <ReactLoading data-testid='loading-in-button' type='spin' height={100} width={100} />;
+    return (
+      <ReactLoading
+        data-testid='loading-in-button'
+        type='spin'
+        height={100}
+        width={100}
+      />
+    );
   return (
     <div className='mx-5 my-4 bg-gray-50 p-8 rounded-lg flex flex-col items-center justify-center shadow-xl'>
       <div className='text-lg font-bold'>{tipo}</div>
       <div>{descripcion}</div>
-      <PrivateComponent roleList={['LIDER']}>
+      <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
         <div className='flex my-2'>
+<<<<<<< HEAD
         <button type='button' onClick={() => setShowEditDialog(true)}>
+=======
+          <button type='button' onClick={() => setShowEditDialog(true)}>
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
             <i className='fas fa-pen mx-2 text-yellow-500 hover:text-yellow-200 cursor-pointer' />
           </button>
           <button type='button' onClick={ejecutarEliminacion}>
@@ -181,12 +258,21 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
   );
 };
 
-const EditarObjetivo = ({ descripcion, tipo, index, idProyecto, setShowEditDialog }) => {
+const EditarObjetivo = ({
+  descripcion,
+  tipo,
+  index,
+  idProyecto,
+  setShowEditDialog,
+}) => {
   const { form, formData, updateFormData } = useFormData();
 
-  const [editarObjetivo, { data: dataMutation, loading }] = useMutation(EDITAR_OBJETIVO, {
-    refetchQueries: [{ query: PROYECTOS }],
-  });
+  const [editarObjetivo, { data: dataMutation, loading }] = useMutation(
+    EDITAR_OBJETIVO,
+    {
+      refetchQueries: [{ query: PROYECTOS }],
+    }
+  );
 
   useEffect(() => {
     if (dataMutation) {
@@ -203,8 +289,13 @@ const EditarObjetivo = ({ descripcion, tipo, index, idProyecto, setShowEditDialo
         indexObjetivo: index,
         campos: formData,
       },
+<<<<<<< HEAD
     }).catch((e) => {
        toast.error('Error editando el objetivo');
+=======
+    }).catch((error) => {
+      toast.error('Error editando el objetivo', error);
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
     });
   };
   return (
@@ -214,14 +305,14 @@ const EditarObjetivo = ({ descripcion, tipo, index, idProyecto, setShowEditDialo
         <DropDown
           label='Tipo de Objetivo'
           name='tipo'
-          required={true}
+          required
           options={Enum_TipoObjetivo}
           defaultValue={tipo}
         />
         <Input
           label='Descripcion del objetivo'
           name='descripcion'
-          required={true}
+          required
           defaultValue={descripcion}
         />
         <ButtonLoading
@@ -233,7 +324,6 @@ const EditarObjetivo = ({ descripcion, tipo, index, idProyecto, setShowEditDialo
     </div>
   );
 };
-
 
 const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
   const [estadoInscripcion, setEstadoInscripcion] = useState('');
@@ -269,16 +359,26 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     <>
       {estadoInscripcion !== '' ? (
         <div className='flex flex-col items-start'>
+<<<<<<< HEAD
           <PrivateComponent roleList={['ESTUDIANTE']}>
+=======
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
           <span>
             Ya estas inscrito en este proyecto y el estado es{' '}
             {estadoInscripcion}
           </span>
+<<<<<<< HEAD
           </PrivateComponent>
           {estadoInscripcion === 'ACEPTADO' && (
             <Link
               to={`/avances/${idProyecto}`}
               className='bg-green-700 p-2 rounded-lg text-white my-2 hover:bg-green-500'
+=======
+          {estadoInscripcion === 'ACEPTADO' && (
+            <Link
+              to={`/avances/${idProyecto}`}
+              className='bg-green-700 p-2 rounded-lg text-white my-2 hover:bg-green-400'
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
             >
               Visualizar Avances
             </Link>

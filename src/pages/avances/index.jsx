@@ -59,6 +59,7 @@ const Avance = ({ avance }) => {
       <span>
         <strong>Fecha: </strong>
         {avance.fecha}
+<<<<<<< HEAD
         </span>
       <div className='flex  my-4'>
         {avance.observaciones.length === 0 ? (
@@ -81,10 +82,34 @@ const Avance = ({ avance }) => {
                 </div>
               );
             })}
+=======
+      </span>
+      <div className='flex my-4'>
+        {avance.observaciones.length === 0 ? (
+          <span> Sin Observaciones </span>
+        ) : (
+          <>
+          {avance.observaciones.map((obs, index) => {
+            return (
+              <div 
+              key={nanoid()}
+              className='bg-white w-32 m-2 p-2 rounded-lg shadow-lg flex flex-col'>
+                <span>
+                  {index + 1}. {obs}
+                </span>
+                <div className='flex place-items-end justify-center my-2'>
+                  <i className='fas fa-pen mx-2'/>
+                  <i className='fas fa-trash mx-2'/>
+                </div>
+              </div>
+            );
+          })}
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
           </>
         )}
       </div>
       <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+<<<<<<< HEAD
         <button
           onClick={() => {
             setOpenDialog(true);
@@ -103,16 +128,44 @@ const Avance = ({ avance }) => {
       >
         <AgregarObservacion _id={avance._id} setOpenDialog={setOpenDialog} />
       </Dialog>
+=======
+        <button 
+        onClick={() => {
+          setOpenDialog(true);
+        }}
+        className='bg-green-700 p-2 my-2 rounded-lg w-48 text-white hover:bg-green-400'
+        type='button'
+        >
+          Agregar Observación
+        </button>
+      </PrivateComponent>
+      <Dialog
+      open={openDialog}
+      onClose={() => {
+        setOpenDialog(false);
+      }}
+      >
+        <AgregarObservacion _id={avance._id} setOpenDialog={setOpenDialog}/>
+      </Dialog> 
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
     </div>
   );
 };
 
+<<<<<<< HEAD
 const AgregarObservacion = ({ _id, setOpenDialog }) => {
   const { formData, form, updateFormData } = useFormData();
   const [crearObservacion, { loading }] = useMutation(CREAR_OBSERVACION, {
     refetchQueries: [GET_AVANCES],
   });
 
+=======
+const AgregarObservacion = ({_id, setOpenDialog}) => {
+  const {formData, form, updateFormData} = useFormData();
+  const [crearObservacion, {loading}] = useMutation(CREAR_OBSERVACION, {
+    refetchQueries: [GET_AVANCES],
+  });
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
   const submitForm = (e) => {
     e.preventDefault();
     crearObservacion({
@@ -121,6 +174,7 @@ const AgregarObservacion = ({ _id, setOpenDialog }) => {
         ...formData,
       },
     })
+<<<<<<< HEAD
       .then(() => {
         toast.success('observación agregada con exito');
         setOpenDialog(false);
@@ -128,10 +182,20 @@ const AgregarObservacion = ({ _id, setOpenDialog }) => {
       .catch(() => {
         toast.error('error agregando observación');
       });
+=======
+    .then(() => {
+      toast.success('Observación agregada con exito');
+      setOpenDialog(false);
+    })
+    .catch(() => {
+      toast.error('Error agregando observación');
+    });
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
   };
   return (
     <div className='p-4'>
       <h1 className='text-2xl font-bold text-gray-900'>
+<<<<<<< HEAD
         Agregar una observacion
       </h1>
       <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
@@ -142,6 +206,18 @@ const AgregarObservacion = ({ _id, setOpenDialog }) => {
             text='Agregar observacion'
             loading={loading}
             disabled={Object.keys(formData).length === 0}
+=======
+        Agregar observación
+      </h1>
+      <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
+        <Input name='observacion' type='text'/>
+        <div className='flex flex-col'>
+          <textarea name='observacion' className='input my-2'/>
+          <ButtonLoading
+          text='Agregar observación'
+          loading={loading}
+          disabled={Object.keys(formData).length === 0}
+>>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
           />
         </div>
       </form>

@@ -17,18 +17,6 @@ const CREAR_AVANCE = gql`
     }
   }
 `;
-<<<<<<< HEAD
-
-const CREAR_OBSERVACION = gql`
-  mutation Mutation($_id: String!, $observacion: String!) {
-    crearObservacion(_id: $_id, observacion: $observacion) {
-      _id
-      observaciones
-    }
-  }
-`;
-
-=======
 const CREAR_OBSERVACION = gql`
 mutation Mutation($id: String!, $observacion: String!) {
   crearObservacion(_id: $_id, observacion: $observacion) {
@@ -37,5 +25,4 @@ mutation Mutation($id: String!, $observacion: String!) {
   }
 }
 `
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
 export { CREAR_AVANCE, CREAR_OBSERVACION };

@@ -4,11 +4,7 @@ import { PROYECTOS } from 'graphql/proyectos/queries';
 import DropDown from 'components/Dropdown';
 import Input from 'components/Input';
 import { Dialog } from '@mui/material';
-<<<<<<< HEAD
 import { Enum_EstadoProyecto,Enum_FaseProyecto, Enum_TipoObjetivo } from 'utils/enums';
-=======
-import { Enum_EstadoProyecto, Enum_TipoObjetivo } from 'utils/enums';
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
 import ButtonLoading from 'components/ButtonLoading';
 import {
   EDITAR_PROYECTO,
@@ -21,22 +17,16 @@ import { Link } from 'react-router-dom';
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
-<<<<<<< HEAD
-import { AccordionStyled, AccordionSummaryStyled, AccordionDetailsStyled, } from 'components/Accordion';
-import Input from 'components/Input';
-=======
 import {
   AccordionStyled,
   AccordionSummaryStyled,
   AccordionDetailsStyled,
 } from 'components/Accordion';
 import ReactLoading from 'react-loading';
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
 
 const IndexProyectos = () => {
   const { data: queryData, loading } = useQuery(PROYECTOS);
 
-<<<<<<< HEAD
   if (loading) return <div>Cargando...</div>;
 
   if (queryData.Proyectos) {
@@ -54,30 +44,6 @@ const IndexProyectos = () => {
         </PrivateComponent>
         {queryData.Proyectos.map((proyecto) => (
           <AccordionProyecto proyecto={proyecto} />            
-=======
-  if (loading) return <div> Cargando...</div>;
-
-  if (queryData.Proyectos) {
-    return (
-      <div className='p-10 flex flex-col'>
-        <div className='flex w-full items-center justify-center'>
-          <h1 className='text-2xl font-bold text-gray-900 my-5'>
-            Lista de Proyectos
-          </h1>
-        </div>
-        <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-          <div className='my-2 self-end'>
-            <button
-              type='button'
-              className='bg-green-700 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-green-400'
-            >
-              <Link to='/proyectos/nuevo'> Crear nuevo proyecto</Link>
-            </button>
-          </div>
-        </PrivateComponent>
-        {queryData.Proyectos.map((proyecto) => (
-          <AccordionProyecto proyecto={proyecto} />
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
         ))}
       </div>
     );
@@ -107,21 +73,12 @@ const AccordionProyecto = ({ proyecto }) => {
               onClick={() => {
                 setShowDialog(true);
               }}
-<<<<<<< HEAD
             > 
             <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
             </button>
           </PrivateComponent>
           <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
             <InscripcionProyecto 
-=======
-            >
-              <i className='mx-4 fas fa-pen text-yellow-600 hover:text-yellow-400' />
-            </button>
-          </PrivateComponent>
-          <PrivateComponent roleList={['LIDER','ESTUDIANTE']}>
-            <InscripcionProyecto
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
               idProyecto={proyecto._id}
               estado={proyecto.estado}
               inscripciones={proyecto.inscripciones}
@@ -155,16 +112,8 @@ const AccordionProyecto = ({ proyecto }) => {
 
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
-<<<<<<< HEAD
   const [editarProyecto, { loading }] = useMutation(EDITAR_PROYECTO);
   
-=======
-
-  // falta capturar error de la mutacion
-  // falta toast de success
-  const [editarProyecto, { loading }] = useMutation(EDITAR_PROYECTO);
-
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
   const submitForm = (e) => {
     e.preventDefault();
     editarProyecto({
@@ -204,11 +153,7 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
     refetchQueries: [{ query: PROYECTOS }],
   });
 
-<<<<<<< HEAD
   useEffect(() => {    
-=======
-  useEffect(() => {
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
     if (dataMutationEliminar) {
       toast.success('Objetivo eliminado con exito');
     }
@@ -233,11 +178,7 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
       <div>{descripcion}</div>
       <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
         <div className='flex my-2'>
-<<<<<<< HEAD
         <button type='button' onClick={() => setShowEditDialog(true)}>
-=======
-          <button type='button' onClick={() => setShowEditDialog(true)}>
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
             <i className='fas fa-pen mx-2 text-yellow-500 hover:text-yellow-200 cursor-pointer' />
           </button>
           <button type='button' onClick={ejecutarEliminacion}>
@@ -289,13 +230,8 @@ const EditarObjetivo = ({
         indexObjetivo: index,
         campos: formData,
       },
-<<<<<<< HEAD
-    }).catch((e) => {
-       toast.error('Error editando el objetivo');
-=======
     }).catch((error) => {
       toast.error('Error editando el objetivo', error);
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
     });
   };
   return (
@@ -359,26 +295,16 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     <>
       {estadoInscripcion !== '' ? (
         <div className='flex flex-col items-start'>
-<<<<<<< HEAD
           <PrivateComponent roleList={['ESTUDIANTE']}>
-=======
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
           <span>
             Ya estas inscrito en este proyecto y el estado es{' '}
             {estadoInscripcion}
           </span>
-<<<<<<< HEAD
           </PrivateComponent>
           {estadoInscripcion === 'ACEPTADO' && (
             <Link
               to={`/avances/${idProyecto}`}
               className='bg-green-700 p-2 rounded-lg text-white my-2 hover:bg-green-500'
-=======
-          {estadoInscripcion === 'ACEPTADO' && (
-            <Link
-              to={`/avances/${idProyecto}`}
-              className='bg-green-700 p-2 rounded-lg text-white my-2 hover:bg-green-400'
->>>>>>> 3efbcfa9df590ef9f426a1584c23bc79e39dde50
             >
               Visualizar Avances
             </Link>

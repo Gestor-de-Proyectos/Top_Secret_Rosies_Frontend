@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
   const { form, formData, updateFormData } = useFormData();
 
-  const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation },] =
+  const [registro, { data: dataMutation, error: errorMutation },] =
     useMutation(REGISTRO);
 
     const submitForm = (e) => {
@@ -29,10 +29,10 @@ const Register = () => {
         setToken(dataMutation.registro.token); {
           toast.success("Usuario creado correctamente")
         }            
-        navigate('/home');
+        navigate('/auth/login');
       }
       else {
-        toast.error("El correo o identificación ingresados ya existen")
+        toast.success("El correo o identificación ingresados ya existen")
       }
     }
   }, [dataMutation, setToken, navigate]);

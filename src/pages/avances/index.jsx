@@ -28,7 +28,7 @@ const IndexAvance = () => {
   return (
     <div className='flex flex-col p-10 items-center w-full'>
       <h1 className='text-2xl font-bold text-gray-900 my-2'>
-        Avances para el proyecto {projectid}
+        Avances del proyecto {projectid}
       </h1>
       <button
         onClick={() => setOpenDialog(true)}

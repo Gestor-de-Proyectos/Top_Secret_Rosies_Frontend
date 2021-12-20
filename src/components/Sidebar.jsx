@@ -5,25 +5,26 @@ import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
 import { useUser } from 'context/userContext';
 
-const SidebarLinks = () => {
-  return (
+const SidebarLinks = () => (
     <ul className='mt-12'>
       <SidebarRoute to='/' title='Inicio' icon='fas fa-home' />
       <SidebarRoute to='/perfil' title='Perfil' icon='fas fa-user-cog' />
-      <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />
+      <PrivateComponent roleList={['LIDER']}>
+        <SidebarRoute to='usuariosLider' title='Usuarios' icon='fas fa-users'/>
       </PrivateComponent>
+      <PrivateComponent roleList={['ADMINISTRADOR']}>
+        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users' />
+      </PrivateComponent>      
       <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-tasks' />  
       <PrivateComponent roleList={['LIDER']}>
         <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-user' />
       </PrivateComponent>
       <PrivateComponent roleList={['LIDER', 'ESTUDIANTE']}>
-      <SidebarRoute to='/avances' title='Avances' icon='fas fa-book-open'/>
+      <SidebarRoute to='/avances/:projectid' title='Avances' icon='fas fa-book-open'/>
       </PrivateComponent>
       <Logout />
     </ul>
   );
-};
 
 const Logout = () => {
   const { setToken } = useAuth();
@@ -33,7 +34,7 @@ const Logout = () => {
   return (
     <li> 
     <button type='button' onClick={() => deleteToken()}>
-      <NavLink to='/auth/login' className='sidebar-route text-red-700'>
+      <NavLink to='/' className='sidebar-route text-red-700'>
         <div className='flex items-center'>
           <i className='fas fa-sign-out-alt' />
           <span className='text-sm  ml-2'>Cerrar Sesión</span>
@@ -112,14 +113,7 @@ const SidebarRouteImagen = ({ to, title, icon}) => {
             : 'sidebar-route text-gray-900 hover:text-white hover:bg-green-400'
         }
       >
-        <div className='flex items-center'>
-          {userData.foto ? (
-          <img className='h-8 w-8 rounded-full' src={userData.foto} alt='foto'/>
-          ) :(
-            <i className={icon}/>
-          )}
-          <span className='text-sm  ml-2'>{title}</span>
-        </div>
+        
       </NavLink>
     </li>
   );

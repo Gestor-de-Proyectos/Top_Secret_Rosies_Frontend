@@ -27,7 +27,7 @@ const useFormData = (initial) => {
       } else {
         obj[key] = value;
       }
-    });    
+    });
     return obj;
   };
   const updateFormData = () => {

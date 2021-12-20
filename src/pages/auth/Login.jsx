@@ -14,7 +14,11 @@ const Login = () => {
   const { form, formData, updateFormData } = useFormData();
 
   const [login, { data: dataMutation, loading: mutationLoading, error: mutationError }] =
-    useMutation(LOGIN);
+    useMutation(LOGIN, {
+      variables: {
+        filtro: { estado: 'AUTORIZADO' },
+      },
+    });
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -30,7 +34,7 @@ const Login = () => {
         setToken(dataMutation.login.token);
         navigate('/home');
       }
-      else{
+      else{        
         toast.error('correo o contraseña incorrecto')
       }
     }
@@ -42,29 +46,27 @@ const Login = () => {
     }     
   }, [mutationError]);
 
-    return( 
-        <div className='max-w-md w-full space-y-8'>
-            <h2 className='mt-6 text-center text-3xl font-bold text-gray-900'>
-                Inicia sesión en tu cuenta
-            </h2>
-            <form className='mt-8 space-y-6'onSubmit={submitForm} onChange={updateFormData} ref={form}>
-            <Input name='correo' type='email' label='Correo' required />
-            <Input name='password' type='password' label='Contraseña' required />
-                <ButtonLoading
-                  disabled={Object.keys(formData).length === 0}
-                  loading={mutationLoading}
-                  text='Iniciar Sesión'
-                  />
-                </form>
-                <div className='items-center justify-between ml-2 block text-sm text-gray-900'>
-                    
-                    <span>¿No tienes cuenta?</span>
-                    <Link to='/auth/register'>
-                    <span className='font-medium text-green-600 hover:text-green-500'>Regístrate</span>
-                    </Link>
-                </div>
-            
-        </div>
+  return( 
+    <div className='max-w-md w-full space-y-8'>
+      <h2 className='mt-6 text-center text-3xl font-bold text-gray-900'>
+        Inicia sesión en tu cuenta
+      </h2>
+        <form className='mt-8 space-y-6'onSubmit={submitForm} onChange={updateFormData} ref={form}>
+          <Input name='correo' type='email' label='Correo' required />
+          <Input name='password' type='password' label='Contraseña' required />
+          <ButtonLoading
+                disabled={Object.keys(formData).length === 0}
+                loading={mutationLoading}
+                text='Iniciar Sesión'
+           />
+        </form>
+      <div className='items-center justify-between ml-2 block text-sm text-gray-900'>
+        <span>¿No tienes cuenta?</span>
+          <Link to='/auth/register'>
+            <span className='font-medium text-green-600 hover:text-green-500 mx-2'> Regístrate </span>
+          </Link>
+      </div>            
+    </div>
     )
 }
 

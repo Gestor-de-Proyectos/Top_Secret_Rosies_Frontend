@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import ButtonLoading from 'components/ButtonLoading';
 import Input from 'components/Input';
-import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
+import { EDITAR_PERFIL } from 'graphql/usuarios/mutations';
 import useFormData from 'hooks/useFormData';
 import { uploadFormData } from 'utils/uploadFormData';
 import { useUser } from 'context/userContext';
-import { GET_USUARIO } from 'graphql/usuarios/queries';
+import { GET_USUARIOP } from 'graphql/usuarios/queries';
 import { toast } from 'react-toastify';
 
 const Profile = () => {  
@@ -15,14 +15,14 @@ const Profile = () => {
 
   // falta capturar error de mutacion
   const [editarPerfil, { data: dataMutation, loading: loadingMutation }] =
-    useMutation(EDITAR_USUARIO);
+    useMutation(EDITAR_PERFIL);
 
   // falta capturar error de query
   const {
-    data: queryData,
-    loading: queryLoading,
+    data: queryData1,
+    loading: queryLoading1,
     refetch,
-  } = useQuery(GET_USUARIO, {
+  } = useQuery(GET_USUARIOP, {
     variables: {
       _id: userData._id,
     },
@@ -30,7 +30,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (dataMutation) {
-      setUserData({ ...userData});
+      setUserData({ ...userData, foto: dataMutation.editarPerfil.foto });
       toast.success('Perfil modificado con exito');
       refetch();
     }
@@ -44,39 +44,59 @@ const Profile = () => {
     editarPerfil({
       variables: {
         _id: userData._id,
-        campos: formUploaded,
+        nombre: formUploaded,
+        apellido: formUploaded,
+        identificacion: formUploaded,
+        correo: formUploaded
       },
     });
   };
 
-  if (queryLoading) return <div>Loading...</div>;
+  if (queryLoading1) return <div data-testid='loading'>Loading...</div>;
 
   return (
     <div className='p-10 flex flex-col items-center justify-center w-full'>
-      <h1 className='font-bold text-2xl text-gray-900'>Perfil del usuario</h1>
-      <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
+      <h1 className='font-bold text-2xl text-gray-900' >
+        Perfil del usuario
+      </h1>
+      <form
+        onSubmit={submitForm}
+        onChange={updateFormData}
+        ref={form}
+        className='flex flex-col items-center justify-center'
+      >
+        
         <Input
-          defaultValue={queryData.Usuario.nombre}
+          defaultValue={queryData1.Usuario.nombre}
           label='Nombre'
           name='nombre'
           type='text'
-          required
+          required={true}
+          aria-label='input-nombre'
         />
         <Input
-          defaultValue={queryData.Usuario.apellido}
+          defaultValue={queryData1.Usuario.apellido}
           label='Apellido'
           name='apellido'
           type='text'
-          required
+          required={true}
         />
         <Input
-          defaultValue={queryData.Usuario.identificacion}
+          defaultValue={queryData1.Usuario.identificacion}
           label='Identificación'
           name='identificacion'
           type='text'
-          required
-        />
+          required={true}
+        />     
+        <Input
+          defaultValue={queryData1.Usuario.correo}
+          label='Correo'
+          name='correo'
+          type='text'
+          required={true}
+        />       
         <ButtonLoading
+          data-testid='buttonLoading'
           text='Confirmar'
           loading={loadingMutation}
           disabled={false}

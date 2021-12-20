@@ -34,7 +34,7 @@ const Logout = () => {
   return (
     <li> 
     <button type='button' onClick={() => deleteToken()}>
-      <NavLink to='/auth/login' className='sidebar-route text-red-700'>
+      <NavLink to='/' className='sidebar-route text-red-700'>
         <div className='flex items-center'>
           <i className='fas fa-sign-out-alt' />
           <span className='text-sm  ml-2'>Cerrar Sesión</span>
@@ -113,14 +113,7 @@ const SidebarRouteImagen = ({ to, title, icon}) => {
             : 'sidebar-route text-gray-900 hover:text-white hover:bg-green-400'
         }
       >
-        <div className='flex items-center'>
-          {userData.foto ? (
-          <img className='h-8 w-8 rounded-full' src={userData.foto} alt='foto'/>
-          ) :(
-            <i className={icon}/>
-          )}
-          <span className='text-sm  ml-2'>{title}</span>
-        </div>
+        
       </NavLink>
     </li>
   );

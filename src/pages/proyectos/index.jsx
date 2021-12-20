@@ -295,12 +295,12 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     <>
       {estadoInscripcion !== '' ? (
         <div className='flex flex-col items-start'>
-          <PrivateComponent roleList={['ESTUDIANTE']}>
+          {/* <PrivateComponent roleList={['ESTUDIANTE']}> */}
           <span>
             Ya estas inscrito en este proyecto y el estado es{' '}
             {estadoInscripcion}
           </span>
-          </PrivateComponent>
+          {/* </PrivateComponent> */}
           {estadoInscripcion === 'ACEPTADO' && (
             <Link
               to={`/avances/${idProyecto}`}
@@ -311,14 +311,14 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
           )}
         </div>
       ) : (
-        <PrivateComponent roleList={['ESTUDIANTE']}>
+        // <PrivateComponent roleList={['ESTUDIANTE']}>
         <ButtonLoading
           onClick={() => confirmarInscripcion()}
           disabled={estado === 'INACTIVO'}
           loading={loading}
           text='Inscribirme en este proyecto'
         />
-        </PrivateComponent>
+        // </PrivateComponent>
       )}
     </>
   );

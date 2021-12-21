@@ -138,6 +138,11 @@ const FormEditProyecto = ({ _id }) => {
           name='estado'
           options={Enum_EstadoProyecto}
         />
+        <DropDown
+          label='Fase del Proyecto'
+          name='fase'
+          options={Enum_FaseProyecto}
+        />
         <ButtonLoading disabled={false} loading={loading} text='Confirmar' />
       </form>
     </div>

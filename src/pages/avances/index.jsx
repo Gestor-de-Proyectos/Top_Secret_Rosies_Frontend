@@ -70,13 +70,13 @@ const Avance = ({ avance }) => {
               <div 
               key={nanoid()}
               className='bg-white w-32 m-2 p-2 rounded-lg shadow-lg flex flex-col'>
-                <span>
+                <span key={nanoid()}>
                   {index + 1}. {obs}
                 </span>
-                <div className='flex place-items-end justify-center my-2'>
+                {/* <div className='flex place-items-end justify-center my-2'>
                   <i className='fas fa-pen mx-2'/>
                   <i className='fas fa-trash mx-2'/>
-                </div>
+                </div> */}
               </div>
             );
           })}
@@ -133,7 +133,7 @@ const AgregarObservacion = ({_id, setOpenDialog}) => {
         Agregar observación
       </h1>
       <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
-        <Input name='observacion' type='text'/>
+        {/* <Input name='observacion' type='text'/> */}
         <div className='flex flex-col'>
           <textarea name='observacion' className='input my-2'/>
           <ButtonLoading

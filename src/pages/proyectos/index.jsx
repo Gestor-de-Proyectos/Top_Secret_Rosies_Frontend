@@ -62,7 +62,7 @@ const AccordionProyecto = ({ proyecto }) => {
         >
           <div className='flex w-full justify-between'>
             <div className='uppercase font-bold text-gray-100 '>
-              {proyecto.nombre} - {proyecto.estado}
+              {proyecto.nombre} - {proyecto.estado} 
             </div>
           </div>
         </AccordionSummaryStyled>
@@ -112,7 +112,8 @@ const AccordionProyecto = ({ proyecto }) => {
 
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
-  const [editarProyecto, { loading }] = useMutation(EDITAR_PROYECTO);
+  const [editarProyecto, { data: dataMutation, loading: LoadingMutation }] = useMutation(EDITAR_PROYECTO);
+  const { data: queryData, loading } = useQuery(PROYECTOS);
   
   const submitForm = (e) => {
     e.preventDefault();
@@ -126,13 +127,23 @@ const FormEditProyecto = ({ _id }) => {
 
   return (
     <div className='p-4'>
-      <h1 className='font-bold'>Modificar Estado del Proyecto</h1>
+      <h1 className='font-bold'>Editar Proyecto</h1>
       <form
         ref={form}
         onChange={updateFormData}
         onSubmit={submitForm}
         className='flex flex-col items-center'
       >
+        <Input
+          label='Nombre del Proyecto:'
+          type='text'
+          name='nombre'
+          />
+        <Input
+          label='Presupuesto del Proyecto:'
+          type='number'
+          name='nombre'
+          />
         <DropDown
           label='Estado del Proyecto'
           name='estado'

@@ -14,3 +14,6 @@ Paso 3: ejecutar el proyecto
 
 `yarn start`
 
+___
+url de despliegue: https://gestionproyectostsr.herokuapp.com
+
